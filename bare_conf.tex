@@ -315,6 +315,26 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 
+\usepackage{syntax}
+\grammarindent 80pt
+
+\usepackage{newfloat}
+% declare the floating environment {Grammar}
+% this will also define \listofGrammars:
+\DeclareFloatingEnvironment[
+% the file extension for the file used to create the list:
+fileext   = logr,% don't use log here!
+% the heading for the list:
+listname  = {List of Grammars},
+% the name used in captions:
+name      = Gramática,
+% the default floating parameters if the environment is used
+% without optional argument:
+placement = htp
+]{Grammar}
+
+
+
 \begin{document}
 %
 % paper title
@@ -445,7 +465,7 @@ The HP model considers two types of residues:  hydrophobic (H) residues  and hyd
 
 \begin{figure}[htb!] \label{fig:PROTEXAM}
 	\centering
-	\includegraphics[scale=0.7]{figures/protein_example.png}
+	\includegraphics[scale=0.7]{figures/proteinExample.png}
 	\caption{One possible configuration of  sequence $PPPPHPHHHHPH$ in the HP model. There is one $HH$ (represented by a dotted line with wide spaces), one $HP$ (represented by a dashed line) and  two $PP$  (represented by dotted lines) contacts.}
 \end{figure}
 
@@ -523,9 +543,62 @@ Genetic Programming (GP) \cite{burke2009exploring} is a sub-field from the progr
 
 \section{Grammatical Evolution} 
 
-Grammatical Evolution (GE) is a relatively new technique from the evolutionary computing, introduced by Ryan el al. \cite{ryan1998grammatical} and it is a type of GP which utilizes a grammatic to generate programs. Just like in GP the main goal is to find a executable program or piece of code, which have a good fitness value. Ryan el al. \cite{ryan1998grammatical} proposes one technique to generate programs or fragments for any language using BNF definitions. This technique can be used to evolve programs though a evolution process. The GE uses a mapping mechanism between the genotype (coded individuals by integer vectors) and phenotype (generated programs to resolve a problem). 
+Grammatical Evolution (GE) is a relatively new technique from the evolutionary computing, introduced by Ryan el al. \cite{ryan1998grammatical} and it is a type of GP which utilizes a grammatic to generate programs. Just like in GP the main goal is to find a executable program or piece of code, which have a good fitness value. Ryan el al. \cite{ryan1998grammatical} proposes one technique to generate programs or fragments for any language using BNF definitions. This technique can be used to evolve programs though a evolution process. The GE uses a mapping mechanism between the genotype (coded individuals by integer vectors) and phenotype (generated programs to resolve a problem). The Backus Naur Form (BNF) notation is used to represent a grammatic from a language in form of production rules. A BNF grammatic consists in a set of terminals, which are items that are allowed to the language, for instance: +, -, *, / etc and non-terminals, which can be expanded into one or more terminals. The grammatic can be expressed as a tuple ${N,T,P,S}$, where $N$ is a set of non-terminals, $T$ a set of terminals, $P$ a set of production rules that maps the elements $N$ to $T$; finally, $S$, a symbol to represent the initial point contained in $N$.
  
+\begin{center}
+	
+	$ N = {\langle expr \rangle, \langle op \rangle, \langle pre-op \rangle}$
+	
+	$ T = {Sin,Cos,Tan,Log,+,-,/,*,X} $
+	
+	$ S = \langle expr \rangle $
+	
+\end{center}
 
+\noindent
+E $P$ pode ser representada como:
+
+\begin{Grammar}
+	\begin{grammar}
+		
+		
+		<expr> ::=  <expr> <op> <expr> \hspace{2cm} (0) 
+		\alt (<expr> <op> <expr>)  \hspace{1.75cm}  (1)  
+		\alt <pre-op> (<expr>) \hspace{2.2cm}  (2) \alt <var> \hspace{3.9cm} (3) \\\
+		
+		<op> ::=  + \hspace{4.4cm} (0)   \alt - \hspace{4.5cm}  (1)  \alt  /  \hspace{4.51cm}  (2) \alt * \hspace{4.45cm}  (3) \\
+		
+		<pre-op> ::= Sin \hspace{4.2cm} (0) \alt Cos
+	\hspace{4.12cm} (1) \alt Tan  \hspace{4.13cm} (2) \alt Cos \hspace{4.12cm} (3) \\
+		
+		<var> ::= X  \hspace{4.4cm} (0)
+		
+		
+	\end{grammar}
+	
+	\caption{Gramática exemplo para demonstrar como decodificar vetores de inteiros em programas de computador.}
+	\label{gram:gramatica}
+\end{Grammar}
+
+
+\begin{table}[htb]
+	\centering
+	\caption{\textit{Regras de produção} e o número de escolhas para cada uma.}
+	\label{tab:productionRules}
+	\begin{tabular}{|l|l|}
+		\hline
+		Production Rules & Number of choices \\ \hline
+		$\langle expr \rangle$                        & 4       \\ \hline
+		$\langle op \rangle$                         & 4       \\ \hline
+		$\langle pre-op \rangle$                         & 4       \\ \hline
+		$\langle var \rangle$                          & 1       \\ \hline
+	\end{tabular}
+\end{table}
+
+
+Ryan et al. \cite{ryan1998grammatical}  proposed the use of genetic algorithm (GA) to control which choices should be made, in this sense allowing the GA select which production rules should be utilized. An individual (chromosome) consists in variable-length vector of integers and it is called the genotype. 
+
+% Para fins de compreensão o processo de mapeamento de um cromossomo será demonstrado utilizando a \autoref{gram:gramatica} apresentada anteriormente nesta seção. O Algoritmo \ref{alg:pseudocodigogrammar} apresenta o \textit{template} geral dos programas gerados pela \autoref{gram:gramatica}. A expressão $\langle expr \rangle$ apresentada na linha 2 do Algoritmo \ref{alg:pseudocodigogrammar} é substituída por expressões matemáticas que estão codificadas pelos cromossomos (vetores de inteiros). 
 
 
 
