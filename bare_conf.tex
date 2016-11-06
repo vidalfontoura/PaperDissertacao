@@ -308,6 +308,10 @@
 % to submit to, of course. )
 
 
+
+\usepackage[onelanguage,linesnumbered,ruled,inoutnumbered]{algorithm2e}
+
+
 \usepackage{graphicx}
 
 
@@ -327,11 +331,12 @@ fileext   = logr,% don't use log here!
 % the heading for the list:
 listname  = {List of Grammars},
 % the name used in captions:
-name      = Gramática,
+name      = Grammar,
 % the default floating parameters if the environment is used
 % without optional argument:
 placement = htp
 ]{Grammar}
+
 
 
 
@@ -576,7 +581,7 @@ E $P$ pode ser representada como:
 		
 	\end{grammar}
 	
-	\caption{Gramática exemplo para demonstrar como decodificar vetores de inteiros em programas de computador.}
+	\caption{Sample grammar to demonstrate how to decode integer vectors in computer programs}
 	\label{gram:gramatica}
 \end{Grammar}
 
@@ -598,14 +603,110 @@ E $P$ pode ser representada como:
 
 Ryan et al. \cite{ryan1998grammatical}  proposed the use of genetic algorithm (GA) to control which choices should be made, in this sense allowing the GA select which production rules should be utilized. An individual (chromosome) consists in variable-length vector of integers and it is called the genotype. 
 
-% Para fins de compreensão o processo de mapeamento de um cromossomo será demonstrado utilizando a \autoref{gram:gramatica} apresentada anteriormente nesta seção. O Algoritmo \ref{alg:pseudocodigogrammar} apresenta o \textit{template} geral dos programas gerados pela \autoref{gram:gramatica}. A expressão $\langle expr \rangle$ apresentada na linha 2 do Algoritmo \ref{alg:pseudocodigogrammar} é substituída por expressões matemáticas que estão codificadas pelos cromossomos (vetores de inteiros). 
+
+For the sake of comprehension the chromosome mapping process will be demonstrated using the Grammar \ref{gram:gramatica}. The Algorithm \ref{alg:pseudocodigogrammar} presents the general template of the generated programs. The expression $\langle expr \rangle$ presented in line 2 is replaced by mathematical expressions coded by the chromosomes (integer vectors).
 
 
+\begin{algorithm}
+	\caption{General template for the generated algorithms}
+	\label{alg:pseudocodigogrammar}
+	float symb(float x) { \\
+		a = $\langle expr \rangle$;   \\
+		return a;  \\
+	}	
+\end{algorithm}
 
 
+\noindent
+Now suppose the following integer vector:
 
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+\begin{center}
+	$ [220, 203, 17, 6, 108, 215, 104, 30] $
+\end{center}
+
+This vector will be utilized to decode the chromosome (genotype) into a piece of code (phenotype)  using the BNF grammar.
+Table \ref{tab:productionRules} summarizes the number of choices associated within each production rule from the Grammar \ref{gram:gramatica}. There are 4 options of production rules that can be selected for the expression $ \langle expr \rangle$. In order to select which option, the first value from the vector should be used. The value is 220 and its mod divided by 4 (four options that can be selected for the expression $ \langle expr \rangle$) results in 0, which means that the first option should be selected $\langle expr \rangle \langle op \rangle \langle expr \rangle$. Note that the first expression is also $ \langle expr \rangle$ and following the same logic we should expand using the next value from the integer vector and applies its mod by the amount of options. The mod from the next value from the vector is 203 mod 4 = 3, which indicates that we should select the fourth option: $ \langle var \rangle$ which is a terminal. The $ \langle var \rangle$ has just one option associated which is the value $X$. Placing this selection in the original expression we have $X \langle op \rangle \langle expr \rangle$. Next it is necessary to decode the non-terminal expression $\langle op \rangle$. The next value from the integer vector is 17 and again we have 4 options $(+ | - | / | *)$. The result is equal to 1, and indicates to select the: $-$. Re-writing the expression we got:  $X  -  \langle expr \rangle$. This process should continue until all the non-terminals be expanded to terminals. In this example the resulting expression (phenotype) is: $X - Sin (X)$. Note that not all of the genes were necessary to obtain the phenotype. In this cases, the genes that were not used are discarded. Moreover, the opposite case can occur: if a chromosome does not contain the necessary number of genes to map to a program. In this scenario the strategy is re-utilize the genes starting from the first one.
+
+%O Algoritmo \ref{alg:GE} apresenta o pseudocódigo da evolução gramatical (EG). Note que o pseudocódigo é muito similar a um algoritmo genético simples. Nas linhas 3 e 4 ocorre a inicialização da população e o mapeamento para programas utilizando a gramática que foi provida como entrada. Em seguida, na linha 5 ocorre a execução dos programas e na linha 6 acontece a avaliação dos indivíduos da população, baseando-se na saída obtida pelos respectivos programas. Dentro do laço principal, apresentado na linha 7, podemos observar o processo de seleção dos indivíduos pais na linha 8 e na linha 9 o processo de cruzamento destes indivíduos. Nas linhas 10 e 11 ocorre a aplicação dos operadores \textit{Prune} e \textit{Duplicate} respectivamente e na linha 12 podemos observar a aplicação do operador de mutação. Em seguida, nas linhas 13,14 e 15 ocorre o mapeamento dos indivíduos descendentes para programas, execução dos programas e finalmente a atribuição de \textit{fitness} para os descendentes. Por fim, na linha 16 do laço principal, ocorre a substituição dos descendentes na população. 
+
+
+%exceto pela aplicação dos operadores \textit{Duplicate} e \textit{Prune} (linhas 10 e 11 do Algoritmo  \ref{alg:GE}) e o processo de decodificação e execução dos programas descendentes (linhas 13 e 14 do Algoritmo \ref{alg:GE}).
+
+\begin{algorithm}[htb]
+	\fontsize{8pt}{10pt}\selectfont
+	\caption{Pseudo code from the Grammatical Evolution}
+	\label{alg:GE}
+	\KwIn{GF -- Grammar File}
+	\Begin{
+		$population \gets$ Create population\;
+		$programas \gets$ Maps the $population$ to programs using $GF$\;
+		Execute the $program$\;
+		Assign fitness value to the solutions of $population$ according with the output obtained by the respective decoded program\;
+		\While{Stop condition not reached}{
+			$parents \gets $ Select individuals to crossover\;
+			$offspring \gets$ Crossover($pais$)\;		
+			$populacao \gets$  Replacement\;
+			
+			Apply the \textit{Prune} operator to the $offspring$\;
+			Apply the \textit{Duplicate} operator  to the $offspring$\;
+			Apply the \textit{Mutation} operator to the $offspring$\;
+			$programs \gets$ Maps $offspring$ to programs using $GF$\;
+			Execute $programs$\;
+			Assign \textit{fitness} value to solutions $offspring$ according with the output obtained by the respective decoded program\;
+			$population \gets$ Replacement\;
+		}
+		\Return{Best program from the $population$}\;
+	}
+\end{algorithm}
+
+\section{Genetic Programming as Hyper-Heuristic to Generate Heuristics}
+\label{subsubsection:PGasHH}
+
+In this section will be presented how GP/GE can be used as mechanism to generate heuristics. Burke et al. \cite{burke2009exploring} describes that many authors mentioned the great suitability of GP to automatically generate new heuristics. Burke et al. \cite{burke2009exploring} also describes some advantages of using this technique. 
+
+\begin{itemize}
+	\item GP uses variable-length chromosomes. Usually, is not possible to define a ideal length to represent heuristics from a given domain problem. 
+	\item GP produces executable data structures and heuristics 
+	usually are expressed as programs or algorithms.
+	\item Ease to identify good characteristics from the problem domain in order to define a terminal set which will be used by the GP.
+	\item Human designed heuristics can be easily expressed in the same language used to create the search space from the GP. The function set, relevant from the problem can be easily determined. Additionally the GP can be supported by a specific grammar which is the case of the GE.
+\end{itemize}
+
+These advantages presented by Burke et al. \cite{burke2009exploring} are also characteristics from the GE, since it is a extension from genetic programming and holds the same features (variable-length, produces executable structures, etc).
+
+Some disadvantages are also described by Burke et al. \cite{burke2009exploring}, for instance: each execution of the GE can return different results because its stochastic behavior. Thus, it is necessary to execute multiple times, in order to obtain a better understanding of the quality from the heuristics that can be achieved. Another disadvantage refers to the parameter configuration, which is usually found by trial and error.
+
+\subsubsection{Basic Approach}
+
+Burke et al. \cite{burke2009exploring} also describes a basci approach to apply genetic programming to generate heuristics.
+
+
+\begin{enumerate}
+	\item Review of the existing heuristics: Analyze if
+	the already proposed heuristics for a given problem can be described into a single framework. These heuristics can be human made or even created by other machine learning techniques. This is step is not trivial, it requires a good understanding of a wide range of existing heuristics. Usually human-designed heuristics are products from years of research. Therefore, a good knowledge of the existing heuristics can be a tough work.  	
+	
+	\item A framework which will use the heuristics: At this moment the concern is how the heuristics will be applied for a given problem. Usually, the frameworks tends to be very different depending on the problem.
+	 
+ 
+	\item Terminal set definition: At this step the concern is the variables that express the state of the problem. These variables will compose the terminals from the GP/GE. Also, other terminals can be used for instance: random constants can be useful.
+	
+	\item Function set definition: It is necessary to define how the variables will be related or combined each other. These relationships will compose the function set of the GP/GE.
+
+	\item Fitness function definition: A fitness function should be identified for the problem. Usually, a simple fitness function will not be able to evaluate properly the chromosomes. Inserting some parameters can help to find the most suitable function.
+	
+	\item Framework execution: Usually, in the first execution of the hyper-heuristic framework the results will not achieve good results, mostly due the parameter configuration. This is observed especially when the research is beginner. Therefore, it is essential that the parameter configuration be carefully investigated.
+
+\end{enumerate}
+
+
+\section{Methodology}
+In this section will be presented the methodology defined for the grammatical evolution application for generating high level heuristics for a hyper-heuristic framework for Protein Structure Prediction 
+
+\section{Experiments}
+
+
+%\subsubsection{Subsubsection Heading Here}
+%Subsubsection text here.
 
 
 % An example of a floating figure using the graphicx package.
