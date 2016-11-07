@@ -735,12 +735,51 @@ A specific terminal set for the acceptance criterion were also defined.
 
  \begin{itemize}
  	 \item Delta: The difference between the quality of the current solution and the generated solution.
- 	\item Delta: A diferença da qualidade entre a solução corrente e a solução descendente.
- 	\item PF: A qualidade da solução anterior.
- 	\item CF: A qualidade da solução atual.
- 	\item CI: Iteração corrente.
- 	\item TI: Número de iterações.
+ 	\item PF: The quality of the previous solution.
+ 	\item CF: The quality of the current solution.
+ 	\item CI: Current iteration.
+ 	\item TI: Total number of iterations.
  \end{itemize}
+ 
+ The terminal set data was initialized executing all heuristic once and calculated the data to fill the values in the terminal sets. Every consecutive iteration will update the terminal set data and will be used during the search progress.
+ 
+ Using these statistic data and a function set of contained the following operations: addition, subtraction, multiplication and division, a grammar was designed to support the generation of the high level heuristics. The designed grammar to generate the selection mechanism and acceptance criterion is presented in the Grammar \ref{grammar:proposedGrammar}.
+ 
+ \begin{Grammar}
+ 	\begin{grammar}
+ 		<hh-selection> ::= <selection-mechanism> <acceptance-criterion> 
+ 		
+ 		<selection-mechanism> :==  <selection-terminal>   
+ 		\alt <selection-mechanism> <math-function> <selection-mechanism> 
+ 		\alt (<selection-mechanism> <math-function> <selection-mechanism>) 
+ 		
+ 		<selection-terminal> :== 
+ 		RC 
+ 		| Cbest 
+ 		| Ccurrent 
+ 		| Caccept 
+ 		| Cava 
+ 		| Cr
+ 		
+ 		<math-function> :== + 
+ 		| - 
+ 		| * 
+ 		| \%
+ 		
+ 		<acceptance-criterion> ::== <acceptance-terminal> 
+ 		\alt <acceptance-criterion> <math-function>
+ 		<acceptance-criterion>
+ 		\alt (<acceptance-criterion>  <math-function> <acceptance-criterion>) 
+ 		
+ 		<acceptance-terminal> :== PF | CF | CI | TI
+ 		
+ 		%	<acceptance-function> :== + | - | * | \% | $e^x$
+ 		
+ 		
+ 	\end{grammar}
+ 	\caption{Gramática definida para gerar  heurísticas de alto nível}
+ 	\label{grammar:proposedGrammar}
+ \end{Grammar}
 
 
 %The relative representation 
