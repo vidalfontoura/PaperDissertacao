@@ -429,11 +429,21 @@ The abstract goes here.
 
 
 \section{Introduction}
-Proteínas exercem um papel fundamental na natureza, participando em muitas funções importantes das células vivas. Proteínas são estruturas que garantem o correto funcionamento de um amplo número de entidades biológicas. Estas estruturas são resultados de um processo chamado dobramento de proteínas, no qual uma cadeia de aminoácidos inicialmente desdobrada será transformada em sua estrutura final/nativa. A predição de estruturas de proteínas possui um campo amplo de aplicações biotecnológicas e médicas. Por exemplo: síntese de novas proteínas e dobramentos \cite{wang2012structural, rothlisberger2008kemp}, síntese de novas drogas baseada nas estruturas \cite{qian2004improvement, krieger2009improving}  e obtenção experimental de estruturas a partir de dados incompletos de ressonância magnética nuclear \cite{shen2009novo}.  
-A determinação da estrutura nativa de proteínas, também chamada de problema de dobramento de proteínas ou PDP, é uma tarefa desafiadora até mesmo para modernos super computadores. Isto ocorre por conta do imenso espaço de busca para testar todas as possíveis configurações que uma dada proteína pode adotar. Diferentes formas de representar as estruturas/conformações de proteínas existem e podem ser utilizadas para simular o processo de dobramento. Embora existam modelos extremamente detalhados, estas representações são computacionalmente muito custosas. Consequentemente, muitos autores \cite{custodio2004investigation,hsu2003growth,lin2011protein,unger1993genetic,santanna2008,custodio2014multiple, garza2012locality} utilizam modelos simplificados para representar as estruturas de proteínas. Um modelo bastante conhecido para este propósito, criado por Lau and Dill \cite{lau1989lattice}, é o modelo Hidrofóbico-Polar (HP). Este modelo generaliza os aminoácidos que compõem as proteínas em apenas dois tipos H ou P. Geralmente  utiliza-se um \textit{grid} (2D) ou cubo (3D) para representar as possíveis conformações que uma dada proteína pode obter a partir do processo de dobramento. Para avaliar as estruturas representadas pelo modelo HP é preciso computar o valor de energia associado a uma dada conformação \cite{unger1993genetic}. Para isto, é necessário considerar as interações entre os aminoácidos. Uma interação ocorre quando o par de aminoácidos é adjacente no \textit{grid}/cubo e não é adjacente na sequência. No modelo HP existem apenas três: (HP, HH e PP), mas somente interações hidrofóbicas (HH) influenciam no valor de energia referente a uma conformação \cite{unger1993genetic}. A questão que surge é como buscar, dentre as possíveis conformações, aquela cuja a energia seja mínima.
-Diferentes estratégias heurísticas têm sido desenvolvidas para diminuir a complexidade para encontrar conformações nas quais a energia seja mínima utilizando modelos simplificados. Estas abordagens utilizam técnicas como algoritmos genéticos \cite{unger1993genetic}, otimização de colônia de formigas \cite{shmygelska2002ant,shmygelska2003improved}, algoritmos de estimação de distribuição \cite{santanna2008} e algoritmos evolucionários multiobjetivos \cite{gabriel2012algoritmos} dentre outras. 
+Proteins plays a fundamental role in nature, they are involved in many important functions from the living cells. Proteins are structures, composed by amino-acids that guarantees the correct operation of wide range of biological entities. These structures are result from a process so-called protein folding, which initially an unfolded chain of amino-acids will be transformed into its final/native structure.
 
-Apesar de existirem diferentes estratégias já propostas para o PDP ainda existe dificuldades em manter o desempenho desta estratégias ao aumentar o tamanho das sequências de aminoácidos nas simulações. Este fato continua motivando pesquisadores a buscar novas heurísticas e meta-heurísticas que consigam manter um bom desempenho quando submetidas a sequência de aminoácidos maiores. Geralmente as heurísticas propostas precisam passar por um processo de configuração fina para obterem bons resultados. Diferentes parâmetros devem ser escolhidos e nem sempre estas escolhas são triviais. É nesse contexto que as hiper-heurísticas geralmente são aplicadas e vem apresentando bons resultados \cite{burke2013hyper}. Entretanto, não existem muitas abordagens que visam o projeto automático de novas heurísticas ou automatização da seleção de heurísticas existentes para o PDP.
+The protein structure prediction has a wide range of biotechnology e medical applications. For instance: synthesis of new proteins and folds \cite{wang2012structural, rothlisberger2008kemp}, structure based synthesis of new drugs \cite{davis2009rosettaligand}, refinement of theoretical models obtained by comparative modeling \cite{qian2004improvement, krieger2009improving}, and
+obtaining experimental structures from incomplete nuclear magnetic
+resonance data  \cite{shen2009novo}.  
+
+The determination of the native structure of a protein, is also called as protein structure problem (PSP), and is a hard task even for the modern super computers. The difficulty is due the huge search space to test all possible configurations that a given protein can adopt. Many models to represent the proteins structures exists and can be utilized to simulated the folding process. Although there exists extremely detailed models, these representations are computational very expensive. Hence, many authors \cite{custodio2004investigation,hsu2003growth,lin2011protein,unger1993genetic,santanna2008,custodio2014multiple, garza2012locality} used simplified models to represent the protein structures. A very known model for this purpose was presented by Lau and Dill \cite{lau1989lattice}, it is the Hydrophobic-Polar (HP) model. This models generalizes the amino-acids that composes the proteins into just two types H or P. Usually, a grid (2D) or cube (3D) to represent the possible conformations that a protein can adopt. To evaluate the structures represented by the HP model is necessary to compute the energy value associated with the conformation \cite{unger1993genetic}. 
+
+% Para isto, é necessário considerar as interações entre os aminoácidos. Uma interação ocorre quando o par de aminoácidos é adjacente no \textit{grid}/cubo e não é adjacente na sequência. No modelo HP existem apenas três: (HP, HH e PP), mas somente interações hidrofóbicas (HH) influenciam no valor de energia referente a uma conformação \cite{unger1993genetic}. A questão que surge é como buscar, dentre as possíveis conformações, aquela cuja a energia seja mínima.
+
+Many heuristics strategies were developed in order to decrease the complexity to find conformations, where the energy associated with it is minimum, using simplified models. Theses approaches uses genetic algorithms \cite{unger1993genetic}, ant colony optimization \cite{shmygelska2002ant, shmygelska2003improved}, estimation distribution algorithms \cite{santana2008protein} and multi-objective algorithms \cite{gabriel2012algoritmos} among others.
+
+Although, there is  different strategies already proposed for the PSP, still exists difficulties in maintain the performance when increasing the length of the sequences amino-acids. This fact continues to motivated researchers in the seek of new heuristics and meta-heuristics that can achieve good results when applied to bigger sequences of amino-acids.
+
+ Este fato continua motivando pesquisadores a buscar novas heurísticas e meta-heurísticas que consigam manter um bom desempenho quando submetidas a sequência de aminoácidos maiores. Geralmente as heurísticas propostas precisam passar por um processo de configuração fina para obterem bons resultados. Diferentes parâmetros devem ser escolhidos e nem sempre estas escolhas são triviais. É nesse contexto que as hiper-heurísticas geralmente são aplicadas e vem apresentando bons resultados \cite{burke2013hyper}. Entretanto, não existem muitas abordagens que visam o projeto automático de novas heurísticas ou automatização da seleção de heurísticas existentes para o PDP.
 
 
 Esta proposta visa a aplicação de uma estratégia de geração automática de heurísticas de alto nível para uma plataforma hiper-heurística do problema de dobramento de proteínas, chamada HyPDP, que será desenvolvida. A HyPDP consistirá em: um conjunto de heurísticas de baixo nível que já foram propostas na literatura para o PDP; um mecanismo de memória de soluções; e uma função para avaliar estas soluções. 
@@ -554,7 +564,8 @@ Recently Burke et al \cite{burke2010classification} classified hyper-heuristic f
 
 Genetic Programming (GP) \cite{burke2009exploring} is a sub-field from the program synthesis which uses ideas from the evolution theory to produce programs. The principle factors from the evolutionary computation are inheritance, reproduction/mutation and selection of the fittest. These factors drives the evolution of programs using genetic programming. Initially, a random-generated population of programs is created. Using a selection method to select good individuals for reproduction. Then the reproduction and mutation steps takes place in order to generate an offspring. Finally, the offspring is evaluated to assign a fitness value and based on this value the offspring can either enter or not in the population. Genetic programming is a method to generate syntactically valid programs and the fitness function is used to decide which one is the most suitable for a given problem. Traditionally in genetic programming, the programs that compose the population are represented using a tree structure. However, other structures that can be evolved exists, for instance: linear sequences of instructions and grammatic expressions. 
 
-\section{Grammatical Evolution} 
+\section{Grammatical Evolution}
+\label{sec:grammaticalEvolution}
 
 Grammatical Evolution (GE) is a relatively new technique from the evolutionary computing, introduced by Ryan el al. \cite{ryan1998grammatical} and it is a type of GP which utilizes a grammatic to generate programs. Just like in GP the main goal is to find a executable program or piece of code, which have a good fitness value. Ryan el al. \cite{ryan1998grammatical} proposes one technique to generate programs or fragments for any language using BNF definitions. This technique can be used to evolve programs though a evolution process. The GE uses a mapping mechanism between the genotype (coded individuals by integer vectors) and phenotype (generated programs to resolve a problem). The Backus Naur Form (BNF) notation is used to represent a grammatic from a language in form of production rules. A BNF grammatic consists in a set of terminals, which are items that are allowed to the language, for instance: +, -, *, / etc and non-terminals, which can be expanded into one or more terminals. The grammatic can be expressed as a tuple ${N,T,P,S}$, where $N$ is a set of non-terminals, $T$ a set of terminals, $P$ a set of production rules that maps the elements $N$ to $T$; finally, $S$, a symbol to represent the initial point contained in $N$.
  
@@ -777,13 +788,100 @@ A specific terminal set for the acceptance criterion were also defined.
  		
  		
  	\end{grammar}
- 	\caption{Gramática definida para gerar  heurísticas de alto nível}
+ 	\caption{Designed grammar to generate high level heuristics}
  	\label{grammar:proposedGrammar}
  \end{Grammar}
 
+Using the Grammar \ref{grammar:proposedGrammar} and integer vectors is possible to generate high level heuristics. The terminal sets from the grammar presents statistic information from the history of  the low level heuristics application. This information is used as raw material for building the selection mechanism and the acceptance criterion to a hyper-heuristic framework.
 
+The next step consists of evolving a population of integer vectors, initially random generated, using the evolution process described in Section \ref{sec:grammaticalEvolution}. 
 %The relative representation 
+\subsection{Fitness Function}
 
+In order to evaluate the generated individuals during the search progress, a fitness function was designed based on the Sabar et al. \cite{sabar2015automatic} work. The probability of selecting an individual, changes according to the quality of the best solution returned by the execution of the hyper-heuristic framework using the high level heuristics coded by the individual. 
+
+Suppose that $f_i$, $f_o$ represents respectively the quality of the input and output solution and $P_h$ the vector of probabilities of selecting the individuals from population. Now suppose that when applying the $i_{th}$ individual and it obtained an improvement the reward will be calculated using Equation \ref{eq:fitnessFunction}.
+
+\begin{equation} {}
+\label{eq:fitnessFunction}
+Ph[i] = Ph[i] + \sigma 	
+\end{equation} 
+
+Where $\sigma = (f_i - f_o)/(f_i + f_o)$. 
+
+And all other individuals  $j \neq i$ should be penalized using Equation \ref{eq:fitnessPenalizeFunction}
+
+\begin{equation} {}
+\label{eq:fitnessPenalizeFunction}
+Ph[j] = Ph[j] - (\sigma / (Nh - 1))
+\end{equation}
+
+Such that  $j \in \{1, ..., Nh\} ~e~ j \neq i$. And $Nh$ the number of individuals.
+
+Otherwise (if the output solution is worst than the input), a penalization should be applied to the $i_{th}$ individual using Equation \ref{eq:fitnessBadFunction}.
+
+ \begin{equation} {}
+ \label{eq:fitnessBadFunction}
+ Ph[i] = Ph[i] - |\sigma \times \alpha|
+ \end{equation}
+ 
+ Where $\alpha =$ current iteration $/$ total number of iterations.
+ 
+ And all other individuals $j \neq i$ should receive a reward using Equation \ref{eq:fitnessOtherFunction} 
+ 
+ \begin{equation} {}
+ \label{eq:fitnessOtherFunction}
+ Ph[j] = Ph[j] + (|\sigma| \times \alpha / (Nh -1))
+ \end{equation}
+ 
+ Such that  $j \in \{1, ..., Nh\} ~e~ j \neq i$. Where $Nh$ = number of individuals and $\alpha =$ current iteration $/$ total number of iterations.
+ 
+ The motivation behind decreasing the probability from the other individuals is to reduce the chances of those individuals to be selected. Initially, the probability os each individual is calculated, decoding the respective selection mechanism and acceptance criterion and executing it within a hyper-heuristic framework for a defined number of iterations.
+  
+\subsection{Stopping Criterion}
+\label{sub:criterioParada}
+
+	//TODO: CHECK THIS
+%%  Para terminar o processo da EG um número máximo de iterações que não obtêm melhora será utilizado como condição de parada. Note que este critério de parada é referente à parada do processo da EG e não das execuções dos indivíduos dentro do \textit{framework} hiper-heurístico, que ocorrem durante o progresso da EG. 
+  
+  \subsection{Low Level Heuristics} 
+  
+  The low level heuristics in this paper are composed by two main components: a set of low level heuristics, that were selected from previous studies using the PSP, a backtrack repair mechanism and a memory mechanism.
+
+  \subsubsection{Low Level Heuristics Set}
+ 
+ 
+  \begin{itemize}
+  	\item \textit{Two Points Crossover} (2X): This operator selects, randomly, two crossing points splitting the individuals in 3 pieces. The genes between the selected positions are exchanges between the parents in order to generate the offspring. \cite{benitez2015algoritmo}.
+  	
+  	
+  	\item  \textit{Multi Points Crossover} (MPX): Similar with 2X although with c points of crossing. The c is calculated using  $c = int(n * 0.1)$, where $n$ is the sequence length. The MPX is useful to promote a wide structural diversity \cite{sabar2014automatic}.
+  	
+	\item \textit{Segment Mutation} (SMUT): It changes a random number (5 to 7) of consecutive genes for distinct directions. This heuristic introduces large changes in the conformation, and it has a great probability of creating collisions.  
+
+	\item \textit {Exhaustive Search Mutation} (EMUT): This heuristics selects a random gene and changes to all possible directions and it will keep the change that achieve improvement. This operator has a trade-off because it demands four fitness evaluations instead of just one. However, this heuristic has great potential of improving the input solution.
+	
+	\item \textit{Local Move Operator} (LM): This heuristic exchanges directions between two consecutive random selected genes. There is some conditions in order to execute this heuristics, for instance, the new directions can create redundant movements. This heuristic introduces a "corner" movement.
+	
+	\item \textit{Loop Move Operator} (LPM): Similar with LM, this heuristic exchanges directions between two genes that are five genes of distance between each other, creating a loop movement.
+	
+	
+	\item \textit{Opposite Mutation} (OM): This heuristic exchanges directions, for the opposite, within a sequence of genes between two genes $(i,j)$ selected at random. The direction 0 ($F$) does not have a opposite, therefore it is maintained. 
+	
+ \end{itemize} 	 
+  
+\subsection{Process of the EG} 
+
+The main steps of the proposed EG will be presented in this sub-section. Initially a population of individuals (high level heuristics) is randomly generated. The fitness value for the population is calculated inserting the individual within a hyper-heuristic framework and executing it for a predefined number of iterations. Iteratively select parent individuals to apply the operators (crossover, prune, duplicate, mutation) to generate the offspring. To evaluate the offspring the next steps are executed.
+
+
+
+\begin{enumerate}
+	
+	\item Each individual is decoded into a selection mechanism and a acceptance criterion. The terminals described earlier in this section will be used as input for the selection mechanism.
+	
+
+\end{enumerate}
 
 
 
