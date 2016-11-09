@@ -441,23 +441,11 @@ The determination of the native structure of a protein, is also called as protei
 
 Many heuristics strategies were developed in order to decrease the complexity to find conformations, where the energy associated with it is minimum, using simplified models. Theses approaches uses genetic algorithms \cite{unger1993genetic}, ant colony optimization \cite{shmygelska2002ant, shmygelska2003improved}, estimation distribution algorithms \cite{santana2008protein} and multi-objective algorithms \cite{gabriel2012algoritmos} among others.
 
-Although, there is  different strategies already proposed for the PSP, still exists difficulties in maintain the performance when increasing the length of the sequences amino-acids. This fact continues to motivated researchers in the seek of new heuristics and meta-heuristics that can achieve good results when applied to bigger sequences of amino-acids.
+Although, there is  different strategies already proposed for the PSP, still exists difficulties in maintain the performance when increasing the length of the sequences amino-acids. This fact continues to motivated researchers in the seek of new heuristics and meta-heuristics that can achieve good results when applied to bigger sequences of amino-acids. Usually, the proposed heuristics need to pass through fine configuration tuning in order to obtain good results.  Many parameters should be chosen and this decisions is not trivial. In this context, hyper-heuristics strategies usually suit well and presents good results \cite{burke2013hyper}. However, there is a lack of approaches that aim the automated design of new heuristics or automation of heuristics selection for the PSP.
 
- Este fato continua motivando pesquisadores a buscar novas heurísticas e meta-heurísticas que consigam manter um bom desempenho quando submetidas a sequência de aminoácidos maiores. Geralmente as heurísticas propostas precisam passar por um processo de configuração fina para obterem bons resultados. Diferentes parâmetros devem ser escolhidos e nem sempre estas escolhas são triviais. É nesse contexto que as hiper-heurísticas geralmente são aplicadas e vem apresentando bons resultados \cite{burke2013hyper}. Entretanto, não existem muitas abordagens que visam o projeto automático de novas heurísticas ou automatização da seleção de heurísticas existentes para o PDP.
+This paper proposes the automated generation of high level heuristics to a hyper-heuristic framework to the protein structure problem. In order to generate the high level heuristics: evolution grammatical (EG) will be used, which is a type of genetic programming (PG). The EG will generate selection mechanisms and acceptance criteria to hyper-heuristics framework.
 
-
-Esta proposta visa a aplicação de uma estratégia de geração automática de heurísticas de alto nível para uma plataforma hiper-heurística do problema de dobramento de proteínas, chamada HyPDP, que será desenvolvida. A HyPDP consistirá em: um conjunto de heurísticas de baixo nível que já foram propostas na literatura para o PDP; um mecanismo de memória de soluções; e uma função para avaliar estas soluções. 
-
-
-Para gerar as heurísticas de alto nível será utilizada a evolução gramatical (EG), que trata-se de um tipo de programação genética (PG). A EG gerará mecanismos de seleção e critérios de aceitação para a plataforma HyPDP. 
-
-
-Esta proposta é baseada no trabalho desenvolvido por Sabar et al. \cite{sabar2015automatic}, o qual gera heurísticas de alto nível para diversos domínios de problema contidos no framework HyFlex \cite{ochoa2012hyflex}, e que apresentou bons resultados em relação a outras estratégias.
-
-
-\hfill mds
- 
-\hfill August 26, 2015
+The propose of this paper is based on a previous work developed by Sabar et al. \cite{sabar2015automatic}, which generates high level heuristics to six domain problems contained in the hyper-heuristic framework HyFlex \cite{ochoa2012hyflex}.
 
 \section{Protein Structure Prediction} \label{sec:proteinfolding}
 
@@ -725,7 +713,7 @@ This representation was used to represent the chromosome within the PSP and the 
 
 As mentioned before a hyper-heuristic framework is divided in two levels: high and low level heuristics. In this paper, the high level heuristics are composed by selection mechanism and acceptance criterion. The low level heuristics consists in a set of heuristics, selected from previous works, a memory mechanism and a fitness function. 
 
-Two terminal sets (one for the selection mechanism and another for the acceptance criterion) were defined accordingly with the information that can be calculated within the history of the low level heuristics executions. The terminal sets were inspired by work \cite{sabar2015automatic}. The selection terminals is presented next:
+Two terminal sets (one for the selection mechanisms and another for the acceptance criteria) were defined accordingly with the information that can be calculated within the history of the low level heuristics executions. The terminal sets were inspired by work \cite{sabar2015automatic}. The selection terminals is presented next:
 
 \begin{itemize}
 	\item RC (\textit{Reward Credit}): The reward that a given heuristic should receive based on its performance. The improvement is calculated, for the $i_{th}$ heuristic, using $M(i) = (|f1 -f2|/f1)*100$ if $f2$< $f1$, where $f1$ is the current fitness and $f2$ is the fitness of the generated solution by the $i_{th}$ heuristic.
@@ -742,7 +730,7 @@ Two terminal sets (one for the selection mechanism and another for the acceptanc
 	
 	\end{itemize} 
 
-A specific terminal set for the acceptance criterion were also defined.
+A specific terminal set for generating acceptance criteria were also defined.
 
  \begin{itemize}
  	 \item Delta: The difference between the quality of the current solution and the generated solution.
@@ -754,7 +742,7 @@ A specific terminal set for the acceptance criterion were also defined.
  
  The terminal set data was initialized executing all heuristic once and calculated the data to fill the values in the terminal sets. Every consecutive iteration will update the terminal set data and will be used during the search progress.
  
- Using these statistic data and a function set of contained the following operations: addition, subtraction, multiplication and division, a grammar was designed to support the generation of the high level heuristics. The designed grammar to generate the selection mechanism and acceptance criterion is presented in the Grammar \ref{grammar:proposedGrammar}.
+ Using these statistic data and a function set of contained the following operations: addition, subtraction, multiplication and division, a grammar was designed to support the generation of the high level heuristics. The designed grammar to generate selection mechanisms and acceptance criteria is presented in the Grammar \ref{grammar:proposedGrammar}.
  
  \begin{Grammar}
  	\begin{grammar}
@@ -792,11 +780,14 @@ A specific terminal set for the acceptance criterion were also defined.
  	\label{grammar:proposedGrammar}
  \end{Grammar}
 
-Using the Grammar \ref{grammar:proposedGrammar} and integer vectors is possible to generate high level heuristics. The terminal sets from the grammar presents statistic information from the history of  the low level heuristics application. This information is used as raw material for building the selection mechanism and the acceptance criterion to a hyper-heuristic framework.
+Using the Grammar \ref{grammar:proposedGrammar} and integer vectors is possible to generate high level heuristics. The terminal sets from the grammar presents statistic information from the history of  the low level heuristics application. This information is used as raw material for building the selection mechanisms and the acceptance criteria to a hyper-heuristic framework.
 
 The next step consists of evolving a population of integer vectors, initially random generated, using the evolution process described in Section \ref{sec:grammaticalEvolution}. 
 %The relative representation 
 \subsection{Fitness Function}
+\label{subsection:fitnessFunction}
+
+%//TODO: MUDAR aqui
 
 In order to evaluate the generated individuals during the search progress, a fitness function was designed based on the Sabar et al. \cite{sabar2015automatic} work. The probability of selecting an individual, changes according to the quality of the best solution returned by the execution of the hyper-heuristic framework using the high level heuristics coded by the individual. 
 
@@ -886,6 +877,34 @@ The main steps of the proposed EG will be presented in this sub-section. Initial
 
 
 \section{Experiments}
+
+In this section, we will discuss the conducted experiments in order to evaluate the methodology proposed by this paper. Three GE were executed and will de described next. All experiments were executed 30 times because of the stochastic behavior of the GE. 
+
+The first  experiment (GExp-1) that was executed consisted on executing the GE only generating selection mechanisms. Just one piece of the high level heuristic from the hyper-heuristic frameworks was evolved, the acceptance criterion was fixed, within the hyper-heuristic framework HyPDP,  in order to evaluate the ability of generating selection mechanisms isolated from acceptance criteria. A adaptation of the Improvement Only (OM) \cite{burke2013hyper}, which also accepts generated solutions with the same fitness value, was used as the acceptance criterion. The second GE experiment (GExp-2) consisted on generating only acceptance criteria. Fixing the selection mechanism, within the hyper-heuristic framework, with the better (the one with higher fitness from the 30 executions) selection mechanism generated by the GExp-1. Finally, the third GE experiment (GExp-3) was executed generating both selection mechanisms and acceptance criteria. Table \ref{tab:geExps} summarizes the average, standard deviations, max and min fitness values from 30 executions from the tree experiments.
+
+
+\begin{table}[]
+	\centering
+	\caption{Average, Std Dev, Max and Min values of the 30 executions of the GE experiments}
+	\label{tab:geExps}
+	\begin{tabular}{lllll}
+		& GExp-1 & GExp-2 & GExp-3 &  \\ \cline{1-4}
+		Average & 2,248  & 2,281  & 1,997  &  \\ \cline{1-4}
+		Std Dev & 0,117  & 0,160  & 0,152  &  \\ \cline{1-4}
+		Max     & 2,433  & 2,453  & 2,310  &  \\ \cline{1-4}
+		Min     & 2,001  & 1,894  & 1,847  & 
+	\end{tabular}
+\end{table}
+
+Considering that the range of the fitness can vary from 0 to 3, as described in Sub-section \ref{subsection:fitnessFunction} it is possible to see looking Table \ref{tab:geExps} that the GExp-1 and GExp-2 obtained higher average values in relation to GExp-3. The Kruskal and Wallis showed statistical difference between GExp-1 x GExp-3  and GExp-2 x GExp-3 but no for the GExp-1 x GExp-2.
+
+This indicated that generating the high level heuristics separately it was more effective from generating both. 
+
+
+
+
+
+
 
 
 %\subsubsection{Subsubsection Heading Here}
