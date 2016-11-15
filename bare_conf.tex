@@ -431,11 +431,11 @@ The abstract goes here.
 \section{Introduction}
 Proteins plays a fundamental role in nature, they are involved in many important functions from the living cells. Proteins are structures, composed by amino-acids that guarantees the correct operation of wide range of biological entities. These structures are result from a process so-called protein folding, which initially an unfolded chain of amino-acids will be transformed into its final/native structure.
 
-The protein structure prediction has a wide range of biotechnology e medical applications. For instance: synthesis of new proteins and folds \cite{wang2012structural, rothlisberger2008kemp}, structure based synthesis of new drugs \cite{davis2009rosettaligand}, refinement of theoretical models obtained by comparative modeling \cite{qian2004improvement, krieger2009improving}, and
+The protein structure prediction (PSP) has a wide range of biotechnology and medical applications. For instance: synthesis of new proteins and folds \cite{wang2012structural, rothlisberger2008kemp}, structure based synthesis of new drugs \cite{davis2009rosettaligand}, refinement of theoretical models obtained by comparative modeling \cite{qian2004improvement, krieger2009improving}, and
 obtaining experimental structures from incomplete nuclear magnetic
 resonance data  \cite{shen2009novo}.  
 
-The determination of the native structure of a protein, is also called as protein structure problem (PSP), and is a hard task even for the modern super computers. The difficulty is due the huge search space to test all possible configurations that a given protein can adopt. Many models to represent the proteins structures exists and can be utilized to simulated the folding process. Although there exists extremely detailed models, these representations are computational very expensive. Hence, many authors \cite{custodio2004investigation,hsu2003growth,lin2011protein,unger1993genetic,santanna2008,custodio2014multiple, garza2012locality} used simplified models to represent the protein structures. A very known model for this purpose was presented by Lau and Dill \cite{lau1989lattice}, it is the Hydrophobic-Polar (HP) model. This models generalizes the amino-acids that composes the proteins into just two types H or P. Usually, a grid (2D) or cube (3D) to represent the possible conformations that a protein can adopt. To evaluate the structures represented by the HP model is necessary to compute the energy value associated with the conformation \cite{unger1993genetic}. 
+The determination of the native structure of a protein is a hard task even for the modern super computers. The difficulty is due the huge search space to test all possible configurations that a given protein can adopt. Many models to represent the proteins structures exists and can be utilized to simulated the folding process. Although there exists extremely detailed models, these representations are computational very expensive. Hence, many authors \cite{custodio2004investigation,hsu2003growth,lin2011protein,unger1993genetic,santana2008protein,custodio2014multiple, garza2012locality} used simplified models to represent the protein structures. A very known model for this purpose was presented by Lau and Dill \cite{lau1989lattice}, it is the Hydrophobic-Polar (HP) model. This models generalizes the amino-acids that composes the proteins into just two types H or P. Usually, a grid (2D) or cube (3D) to represent the possible conformations that a protein can adopt. To evaluate the structures represented by the HP model is necessary to compute the energy value associated with the conformation \cite{unger1993genetic}. 
 
 % Para isto, é necessário considerar as interações entre os aminoácidos. Uma interação ocorre quando o par de aminoácidos é adjacente no \textit{grid}/cubo e não é adjacente na sequência. No modelo HP existem apenas três: (HP, HH e PP), mas somente interações hidrofóbicas (HH) influenciam no valor de energia referente a uma conformação \cite{unger1993genetic}. A questão que surge é como buscar, dentre as possíveis conformações, aquela cuja a energia seja mínima.
 
@@ -443,7 +443,7 @@ Many heuristics strategies were developed in order to decrease the complexity to
 
 Although, there is  different strategies already proposed for the PSP, still exists difficulties in maintain the performance when increasing the length of the sequences amino-acids. This fact continues to motivated researchers in the seek of new heuristics and meta-heuristics that can achieve good results when applied to bigger sequences of amino-acids. Usually, the proposed heuristics need to pass through fine configuration tuning in order to obtain good results.  Many parameters should be chosen and this decisions is not trivial. In this context, hyper-heuristics strategies usually suit well and presents good results \cite{burke2013hyper}. However, there is a lack of approaches that aim the automated design of new heuristics or automation of heuristics selection for the PSP.
 
-This paper proposes the automated generation of high level heuristics to a hyper-heuristic framework to the protein structure problem. In order to generate the high level heuristics: evolution grammatical (EG) will be used, which is a type of genetic programming (PG). The EG will generate selection mechanisms and acceptance criteria to hyper-heuristics framework.
+This paper proposes the automated generation of high level heuristics to a hyper-heuristic framework to the PSP problem. In order to generate the high level heuristics: evolution grammatical (EG) will be used, which is a type of genetic programming (PG). The EG will generate selection mechanisms and acceptance criteria to hyper-heuristics framework.
 
 The propose of this paper is based on a previous work developed by Sabar et al. \cite{sabar2015automatic}, which generates high level heuristics to six domain problems contained in the hyper-heuristic framework HyFlex \cite{ochoa2012hyflex}.
 
@@ -481,13 +481,13 @@ The HP model considers two types of residues:  hydrophobic (H) residues  and hyd
 \end{figure}
 
 
-The total number of topological neighboring positions in the lattice ($z$) is called the lattice coordination number.
+%The total number of topological neighboring positions in the lattice ($z$) is called the lattice coordination number.
 
 
-For the HP model, an energy function that  measures the interaction between topological  neighbor residues is defined  as  $\epsilon_{HH}=-1$ and $\epsilon_{HP}=\epsilon_{PP}=0$. The HP problem consists of finding the solution that minimizes the total energy. In the linear representation of the sequence, hydrophobic residues are represented with the letter H and polar ones, with P. In the graphical representation, hydrophobic proteins are represented  by black beads and polar proteins, by white beads. Figure~\ref{fig:PROTEXAM} shows the graphical representation of a possible configuration for  the sequence  $HHHPHPPPPPH$ in a 2D space. The energy that the HP model associates with this configuration is $-2$ because there is only two $HH$ contact, arisen between the second and fifth residues.
+For the HP model, an energy function that  measures the interaction between topological  neighbor residues is defined  as  $\epsilon_{HH}=-1$ and $\epsilon_{HP}=\epsilon_{PP}=0$. The HP problem consists of finding the solution that minimizes the total energy. In the linear representation of the sequence, hydrophobic residues are represented with the letter H and polar ones, with P. In the graphical representation, hydrophobic proteins are represented  by black beads and polar proteins, by white beads.  Figure 1 shows the graphical representation of a possible configuration for  the sequence  $HHHPHPPPPPH$ in a 2D space. The energy that the HP model associates with this configuration is $-2$ because there is only two $HH$ contact, arisen between the second and fifth residues.
 
 
-Among many works related to the Protein Folding Problem, here are some examples of the approaches that have been used to solve it.
+Among many works related to the PSP Problem, here are some examples of the approaches that have been used to solve it.
 
 A very influential paper from Unger and Moult  \cite{unger1993genetic}, introduces a evolutionary algorithm (EA) which uses heuristic-based crossover and mutation operators for the HP model. The algorithm outperformed many variants of Monte Carlo methods for different instances. However,
 good results were obtained, the EA was unable to find the global optimal for the longest instances considered.
@@ -523,12 +523,12 @@ for the application of EDAs to 2D and 3D simplified protein folding problem. The
 %Gabriel \textit{et al}. \cite{gabriel2012algoritmos} propose the use of a table-based multi objective evolutionary algorithm initially introduced by \cite{delbem2002restabelecimento}, using the HP-3D model for the representation and solution evaluation. The authors also propose the use of a second objective that aims to measure the distance between hydrophobic amino-acids, allowing the algorithm to distinguish between different solutions with the same energy value.
 
 %TODO: check how to improve it
-The present paper proposes the use of a grammatical evolution GE to generate high level heuristics for a hyper heuristic framework.
+The present paper proposes the use of a grammatical evolution GE to generate high level heuristics for a hyper heuristic framework that will be applied to the PSP problem.
 
 
 \section{Hyper-Heuristics}
 
-Hyper-Heuristics can be seen as a methodology to select or create heuristics for a given moment of the search. Motivated by the fact that different heuristics impose different strengths and weakness. Therefore, it makes sense to merge them into one framework. Burke et al \cite{burke2010classification} recently defined hyper-heuristics as "an automated methodology for selecting or generating heuristics to solve hard computational search problems". Over the years, these methodologies have demonstrated success in solving a wide range of real world problems. Mainly, a generic hyper-heuristic framework is compose of two main components known as high-level and low-level heuristics. Figure \ref{fig:HyperHeuristics} shows a general scheme of hyper-heuristic frameworks. The high and low level are separated by a domain barrier which means that the low-level piece is problem dependent while the high level component do not require any knowledge of the problem domain. Ideally if one wants to apply a hyper-heuristic framework to a different problem domain: it is possible to do it by changing only the low-level component no changes should be required in the high-level. It is responsibility from the high-level component to manage the selection or generation of which heuristic should be applied at each decision point. The low-level component corresponds to a pool of heuristics or heuristic components \cite{sabar2015automatic}. 
+Hyper-Heuristics can be seen as a methodology to select or create heuristics for a given moment of the search. Motivated by the fact that different heuristics impose different strengths and weakness. Therefore, it makes sense to merge them into one framework. Burke et al. \cite{burke2010classification} recently defined hyper-heuristics as "an automated methodology for selecting or generating heuristics to solve hard computational search problems". Over the years, these methodologies have demonstrated success in solving a wide range of real world problems. Mainly, a generic hyper-heuristic framework is compose of two main components known as high-level and low-level heuristics. Figure \ref{fig:HyperHeuristics} shows a general scheme of hyper-heuristic frameworks. The high and low level are separated by a domain barrier which means that the low level piece is problem dependent while the high level component do not require any knowledge of the problem domain. Ideally, if one wants to apply a hyper-heuristic framework to a different problem domain: it is possible to do it by changing only the low-level component no changes should be required in the high-level. It is responsibility from the high-level component to manage the selection or generation of which heuristic should be applied at each decision point. The low-level component corresponds to a pool of heuristics or heuristic components \cite{sabar2015automatic}. 
 
 
 \begin{figure}[htb!] \label{fig:HyperHeuristics}
@@ -539,7 +539,7 @@ Hyper-Heuristics can be seen as a methodology to select or create heuristics for
 
 
 
-Recently Burke et al \cite{burke2010classification} classified hyper-heuristic frameworks based on the source of feedback during the learning process and the nature of the search space. In the case of the source of feedback Burke el al \cite{burke2010classification} mention 3 possibilities: online, offline and no learning. If the hyper-heuristic framework uses information gathered during the problem solving it is considered as an online framework. An offline framework requires a training phase to gather information in order to use later in the validation phase. No learning occurs when no feedback is provided to the hyper-heuristic framework \cite{sabar2015automatic}. The nature of the search space can be either selecting or generating heuristics for the underlying problem. Next will be analyzed both kinds of high-level heuristics.
+Recently Burke et al. \cite{burke2010classification} classified hyper-heuristic frameworks based on the source of feedback during the learning process and the nature of the search space. In the case of the source of feedback Burke el al. \cite{burke2010classification} mention 3 possibilities: online, offline and no learning. If the hyper-heuristic framework uses information gathered during the problem solving it is considered as an online framework. An offline framework requires a training phase to gather information in order to use later in the validation phase. No learning occurs when no feedback is provided to the hyper-heuristic framework \cite{sabar2015automatic}. The nature of the search space can be either selecting or generating heuristics for the underlying problem. Next will be analyzed both kinds of high-level heuristics.
 
 \begin{itemize}
 	\item Selecting Heuristics: The majority of hyper-heuristic frameworks published define high level heuristics to select low level heuristics. In general, these frameworks operate using a set of human-designed low level heuristics, usually called pool of heuristics. The pool can contain both constructive or perturbative heuristics. The objective of the hyper-heuristic framework is to select the heuristic, from the pool, which most suits at a given moment. The main idea behind this: is that the strength of several heuristics can be combined into a single framework in order to better explore the search space. Most of the proposed selection mechanisms use simple rules to select the low level heuristics based on their past performance \cite{sabar2015automatic}.
@@ -550,7 +550,7 @@ Recently Burke et al \cite{burke2010classification} classified hyper-heuristic f
 
 \section{Genetic Programming}
 
-Genetic Programming (GP) \cite{burke2009exploring} is a sub-field from the program synthesis which uses ideas from the evolution theory to produce programs. The principle factors from the evolutionary computation are inheritance, reproduction/mutation and selection of the fittest. These factors drives the evolution of programs using genetic programming. Initially, a random-generated population of programs is created. Using a selection method to select good individuals for reproduction. Then the reproduction and mutation steps takes place in order to generate an offspring. Finally, the offspring is evaluated to assign a fitness value and based on this value the offspring can either enter or not in the population. Genetic programming is a method to generate syntactically valid programs and the fitness function is used to decide which one is the most suitable for a given problem. Traditionally in genetic programming, the programs that compose the population are represented using a tree structure. However, other structures that can be evolved exists, for instance: linear sequences of instructions and grammatic expressions. 
+Genetic Programming (GP) \cite{burke2009exploring} is a sub-field from the program synthesis which uses ideas from the evolution theory to produce programs. The principle factors from the evolutionary computation are inheritance, reproduction/mutation and selection of the fittest. These factors drives the evolution of programs using genetic programming. Initially, a random-generated population of programs is created. Using a selection method to select good individuals for reproduction. Then the reproduction and mutation steps takes place in order to generate an offspring. Finally, the offspring is evaluated to assign a fitness value and based on this value the offspring can either enter or not in the population. Genetic programming is a method to generate syntactically valid programs and the fitness function is used to decide which one is the most suitable for a given problem. Traditionally, in genetic programming, the programs that compose the population are represented using a tree structure. However, other structures that can be evolved exists, for instance: linear sequences of instructions and grammatic expressions. 
 
 \section{Grammatical Evolution}
 \label{sec:grammaticalEvolution}
@@ -568,7 +568,7 @@ Grammatical Evolution (GE) is a relatively new technique from the evolutionary c
 \end{center}
 
 \noindent
-E $P$ pode ser representada como:
+And $P$ can be represented as:
 
 \begin{Grammar}
 	\begin{grammar}
@@ -595,7 +595,7 @@ E $P$ pode ser representada como:
 
 \begin{table}[htb]
 	\centering
-	\caption{\textit{Regras de produção} e o número de escolhas para cada uma.}
+	\caption{Production rules and the number of choices allowed}
 	\label{tab:productionRules}
 	\begin{tabular}{|l|l|}
 		\hline
@@ -608,7 +608,7 @@ E $P$ pode ser representada como:
 \end{table}
 
 
-Ryan et al. \cite{ryan1998grammatical}  proposed the use of genetic algorithm (GA) to control which choices should be made, in this sense allowing the GA select which production rules should be utilized. An individual (chromosome) consists in variable-length vector of integers and it is called the genotype. 
+Ryan et al. \cite{ryan1998grammatical}  proposed the use of genetic algorithm (GA) to control which choices should be made, in this sense allowing the GA to select which production rules should be utilized. An individual (chromosome) consists in variable-length vector of integers and it is called the genotype. 
 
 
 For the sake of comprehension the chromosome mapping process will be demonstrated using the Grammar \ref{gram:gramatica}. The Algorithm \ref{alg:pseudocodigogrammar} presents the general template of the generated programs. The expression $\langle expr \rangle$ presented in line 2 is replaced by mathematical expressions coded by the chromosomes (integer vectors).
@@ -632,7 +632,7 @@ Now suppose the following integer vector:
 \end{center}
 
 This vector will be utilized to decode the chromosome (genotype) into a piece of code (phenotype)  using the BNF grammar.
-Table \ref{tab:productionRules} summarizes the number of choices associated within each production rule from the Grammar \ref{gram:gramatica}. There are 4 options of production rules that can be selected for the expression $ \langle expr \rangle$. In order to select which option, the first value from the vector should be used. The value is 220 and its mod divided by 4 (four options that can be selected for the expression $ \langle expr \rangle$) results in 0, which means that the first option should be selected $\langle expr \rangle \langle op \rangle \langle expr \rangle$. Note that the first expression is also $ \langle expr \rangle$ and following the same logic we should expand using the next value from the integer vector and applies its mod by the amount of options. The mod from the next value from the vector is 203 mod 4 = 3, which indicates that we should select the fourth option: $ \langle var \rangle$ which is a terminal. The $ \langle var \rangle$ has just one option associated which is the value $X$. Placing this selection in the original expression we have $X \langle op \rangle \langle expr \rangle$. Next it is necessary to decode the non-terminal expression $\langle op \rangle$. The next value from the integer vector is 17 and again we have 4 options $(+ | - | / | *)$. The result is equal to 1, and indicates to select the: $-$. Re-writing the expression we got:  $X  -  \langle expr \rangle$. This process should continue until all the non-terminals be expanded to terminals. In this example the resulting expression (phenotype) is: $X - Sin (X)$. Note that not all of the genes were necessary to obtain the phenotype. In this cases, the genes that were not used are discarded. Moreover, the opposite case can occur: if a chromosome does not contain the necessary number of genes to map to a program. In this scenario the strategy is re-utilize the genes starting from the first one.
+Table \ref{tab:productionRules} summarizes the number of choices associated within each production rule from the Grammar \ref{gram:gramatica}. There are 4 options of production rules that can be selected for the expression $ \langle expr \rangle$. In order to select which option, the first value from the vector should be used. The value is 220 and its mod divided by 4 (four options that can be selected for the expression $ \langle expr \rangle$) results in 0, which means that the first option should be selected $\langle expr \rangle \langle op \rangle \langle expr \rangle$. Note that the first expression is also $ \langle expr \rangle$ and following the same logic we should expand using the next value from the integer vector and applies its mod by the amount of options. The mod from the next value from the vector is 203 mod 4 = 3, which indicates that we should select the fourth option: $ \langle var \rangle$ which is a terminal. The $ \langle var \rangle$ has just one option associated with it and is the value $X$. Placing this selection in the original expression we have $X \langle op \rangle \langle expr \rangle$. Next it is necessary to decode the non-terminal expression $\langle op \rangle$. The next value from the integer vector is 17 and again we have 4 options $(+ | - | / | *)$. The result is equal to 1, and indicates to select the: $-$. Re-writing the expression we got:  $X  -  \langle expr \rangle$. This process should continue until all the non-terminals be expanded to terminals. In this example the resulting expression (phenotype) is: $X - Sin (X)$. Note that not all of the genes were necessary to obtain the phenotype. In this cases, the genes that were not used are discarded. Moreover, the opposite case can occur: if a chromosome does not contain the necessary number of genes to map to a program. In this scenario the strategy is re-utilize the genes starting from the first one.
 
 %O Algoritmo \ref{alg:GE} apresenta o pseudocódigo da evolução gramatical (EG). Note que o pseudocódigo é muito similar a um algoritmo genético simples. Nas linhas 3 e 4 ocorre a inicialização da população e o mapeamento para programas utilizando a gramática que foi provida como entrada. Em seguida, na linha 5 ocorre a execução dos programas e na linha 6 acontece a avaliação dos indivíduos da população, baseando-se na saída obtida pelos respectivos programas. Dentro do laço principal, apresentado na linha 7, podemos observar o processo de seleção dos indivíduos pais na linha 8 e na linha 9 o processo de cruzamento destes indivíduos. Nas linhas 10 e 11 ocorre a aplicação dos operadores \textit{Prune} e \textit{Duplicate} respectivamente e na linha 12 podemos observar a aplicação do operador de mutação. Em seguida, nas linhas 13,14 e 15 ocorre o mapeamento dos indivíduos descendentes para programas, execução dos programas e finalmente a atribuição de \textit{fitness} para os descendentes. Por fim, na linha 16 do laço principal, ocorre a substituição dos descendentes na população. 
 
@@ -683,27 +683,28 @@ These advantages presented by Burke et al. \cite{burke2009exploring} are also ch
 
 Some disadvantages are also described by Burke et al. \cite{burke2009exploring}, for instance: each execution of the GE can return different results because its stochastic behavior. Thus, it is necessary to execute multiple times, in order to obtain a better understanding of the quality from the heuristics that can be achieved. Another disadvantage refers to the parameter configuration, which is usually found by trial and error.
 
-\subsubsection{Basic Approach}
-
-Burke et al. \cite{burke2009exploring} also describes a basci approach to apply genetic programming to generate heuristics.
-
-
-\begin{enumerate}
-	\item Review of the existing heuristics: Analyze if
-	the already proposed heuristics for a given problem can be described into a single framework. These heuristics can be human made or even created by other machine learning techniques. This is step is not trivial, it requires a good understanding of a wide range of existing heuristics. Usually human-designed heuristics are products from years of research. Therefore, a good knowledge of the existing heuristics can be a tough work.  	
-	
-	\item A framework which will use the heuristics: At this moment the concern is how the heuristics will be applied for a given problem. Usually, the frameworks tends to be very different depending on the problem.
-	 
- 
-	\item Terminal set definition: At this step the concern is the variables that express the state of the problem. These variables will compose the terminals from the GP/GE. Also, other terminals can be used for instance: random constants can be useful.
-	
-	\item Function set definition: It is necessary to define how the variables will be related or combined each other. These relationships will compose the function set of the GP/GE.
-
-	\item Fitness function definition: A fitness function should be identified for the problem. Usually, a simple fitness function will not be able to evaluate properly the chromosomes. Inserting some parameters can help to find the most suitable function.
-	
-	\item Framework execution: Usually, in the first execution of the hyper-heuristic framework the results will not achieve good results, mostly due the parameter configuration. This is observed especially when the research is beginner. Therefore, it is essential that the parameter configuration be carefully investigated.
-
-\end{enumerate}
+%
+%\subsubsection{Basic Approach}
+%
+%Burke et al. \cite{burke2009exploring} also describes a basci approach to apply genetic programming to generate heuristics.
+%
+%
+%\begin{enumerate}
+%	\item Review of the existing heuristics: Analyze if
+%	the already proposed heuristics for a given problem can be described into a single framework. These heuristics can be human made or even created by other machine learning techniques. This is step is not trivial, it requires a good understanding of a wide range of existing heuristics. Usually human-designed heuristics are products from years of research. Therefore, a good knowledge of the existing heuristics can be a tough work.  	
+%	
+%	\item A framework which will use the heuristics: At this moment the concern is how the heuristics will be applied for a given problem. Usually, the frameworks tends to be very different depending on the problem.
+%	 
+% 
+%	\item Terminal set definition: At this step the concern is the variables that express the state of the problem. These variables will compose the terminals from the GP/GE. Also, other terminals can be used for instance: random constants can be useful.
+%	
+%	\item Function set definition: It is necessary to define how the variables will be related or combined each other. These relationships will compose the function set of the GP/GE.
+%
+%	\item Fitness function definition: A fitness function should be identified for the problem. Usually, a simple fitness function will not be able to evaluate properly the chromosomes. Inserting some parameters can help to find the most suitable function.
+%	
+%	\item Framework execution: Usually, in the first execution of the hyper-heuristic framework the results will not achieve good results, mostly due the parameter configuration. This is observed especially when the research is beginner. Therefore, it is essential that the parameter configuration be carefully investigated.
+%
+%\end{enumerate}
 
 
 \section{Methodology}
@@ -913,7 +914,7 @@ The best individual found in the GExp-1 was the following selection mechanism:  
 	\resizebox{\columnwidth}{!}{%
 \begin{tabular}{cccccccccccc}
 	Inst  & 1   & 2    & 3   & 4    & 5    & 6   & 7   & 8    & 9    & 10   & 11   \\ \hline
-	Avg   & 8.1 & -7.6 & 6.7 & 11.9 & 17.4 & 16  & 30  & 28.3 & 40.1 & 35.6 & 35.9 \\ \hline
+	Avg   & 8.1 & 7.6 & 6.7 & 11.9 & 17.4 & 16  & 30  & 28.3 & 40.1 & 35.6 & 35.9 \\ \hline
 	St Dv & 0.3 & 0.5  & 0.5 & 0.7  & 1    & 1.4 & 1.7 & 2    & 2.7  & 2.1  & 2.9  \\ \hline
 	Min   & 8   & 7    & 5   & 11   & 15   & 13  & 25  & 23   & 34   & 32   & 27   \\ \hline
 	Max   & 9   & 9    & 7   & 13   & 19   & 20  & 33  & 32   & 46   & 40   & 41   \\ \hline
@@ -949,27 +950,58 @@ Acceptance Criterion: $( ( ( ( ( CI / PF ) * Delta / CI ) / PF * Delta ) / CI / 
 
 Table \ref{bestGExp3} presents the results, of the best individual generated by the experiment GExp-3, of 30 executions with a time limit of 10 minutes. Once again the values presented did not achieve good results when analyzing the bigger instances. Furthermore, when comparing Table \ref{bestGExp3} with Tables \ref{tab:gexp1best} and \ref{tab:gexp2best} it is possible to see that generating both selection mechanisms and acceptance criteria it is worst than generating them separately.
 
-In order to better investigate the relationship between the generated selection mechanisms and acceptance criteria another experiment was designed. From the 30 executions of the GExp-2 10 random individuals were selected to be further analyzed in detail.	This 10 individuals were re-executed in debugging mode in order to check its behavior. Note that only the acceptance criterion was different between then because the selection mechanism was fixed, using the best generated in the previous experiment GExp-1. From 10 individuals 7 were accepting only better or equal solutions just like the fixed acceptance criterion (adapted IO to accept equal solutions) that was used in the GExp-1. The difference between the individuals and a fixed acceptance criterion was that individuals were slower than the fixed, because it is required to execute arithmetical functions and in the other hand only a simple $if$ was needed to be evaluated. But thinking in the behavior they were exact the same. It was also noticed that 2 individuals, the worst of the group, were always accepting just like the all moves described by Burke et al. \cite{burke2013hyper}. Finally, one individuals was never accepting any solution.
- 
-
-	
-
+In order to better investigate the relationship between the generated selection mechanisms and acceptance criteria another experiment was designed. From the 30 executions of the GExp-2 10 random individuals were selected to be further analyzed in detail.	This 10 individuals were re-executed in debugging mode in order to check its behavior. Note that only the acceptance criterion was different between then because the selection mechanism was fixed, using the best generated in the previous experiment GExp-1. From 10 individuals 7 were accepting only better or equal solutions just like the fixed acceptance criterion (adapted IO to accept equal solutions) that was used in the GExp-1. The difference between the individuals and a fixed acceptance criterion was that individuals were slower than the fixed, because it is required to execute arithmetical functions and in the other hand only a simple $if$ was needed to be evaluated. But thinking in the behavior they were exact the same. It was also noticed that 2 individuals, the worst of the group, were always accepting just like the all moves described by Burke et al. \cite{burke2013hyper}. Finally, 1 individual was never accepting any solution. This experiments showed that the EG managed, several times, to find different acceptance criteria with the same behavior of human-designed strategies. 
 
 \begin{table}[]
 	\centering
 	\caption{Results from the best individual found in GExp-3}
 	\label{bestGExp3}
-		\resizebox{\columnwidth}{!}{%
-	\begin{tabular}{cccccccccccc}
-		Inst  & 1   & 2   & 3   & 4   & 5    & 6    & 7   & 8    & 9    & 10  & 11   \\ \hline
-		Avg   & 7.6 & 7.0 & 5.7 & 9.7 & 13.8 & 12.7 & 24  & 24.2 & 31.6 & 27  & 26.4 \\ \hline
-		St Dv & 0.6 & 0.7 & 0.8 & 0.9 & 1.3  & 0.9  & 1.1 & 1.6  & 1.7  & 1.7 & 2    \\ \hline
-		Min   & 7   & 6   & 4   & 7   & 12   & 11   & 21  & 21   & 29   & 24  & 24   \\ \hline
-		Max   & 9   & 8   & 8   & 11  & 18   & 15   & 26  & 28   & 37   & 31  & 31   \\ \hline
-		O(x*) & 9   & 9   & 8   & 14  & 23   & 21   & 36  & 42   & 53   & 48  & 50  
-	\end{tabular}
-}
+	\resizebox{\columnwidth}{!}{%
+		\begin{tabular}{cccccccccccc}
+			Inst  & 1   & 2   & 3   & 4   & 5    & 6    & 7   & 8    & 9    & 10  & 11   \\ \hline
+			Avg   & 7.6 & 7.0 & 5.7 & 9.7 & 13.8 & 12.7 & 24  & 24.2 & 31.6 & 27  & 26.4 \\ \hline
+			St Dv & 0.6 & 0.7 & 0.8 & 0.9 & 1.3  & 0.9  & 1.1 & 1.6  & 1.7  & 1.7 & 2    \\ \hline
+			Min   & 7   & 6   & 4   & 7   & 12   & 11   & 21  & 21   & 29   & 24  & 24   \\ \hline
+			Max   & 9   & 8   & 8   & 11  & 18   & 15   & 26  & 28   & 37   & 31  & 31   \\ \hline
+			O(x*) & 9   & 9   & 8   & 14  & 23   & 21   & 36  & 42   & 53   & 48  & 50  
+		\end{tabular}
+	}
 \end{table}
+
+
+In order to compare the generated high level heuristics with a already proposed hyper-heuristic strategy it was selected a state-of-art human-designed hyper-heuristic framework \cite{misir2012intelligent} which presented the best results applied to the 6 domain problems from HyFlex framework \cite{ochoa2012hyflex}. Misir et al. \cite{misir2012intelligent} provided us the source code from the  Generic Intelligent Hyper-heuristic (GIHH) and then it was executed against the PSP problem that we implemented using the HyFlex framework.  
+
+Table \cite{tab:gihhandbhlh} presents the best results, for each instance, found by the best generated high level heuristic (B_HLH), the best results found by the GIHH \cite{misir2012intelligent} and finally the best know results (O_x(*)). The B_HLH and the GIHH were executed 10 minutes. It is possible to note that the B_HLH found worst results than the GIHH as the sequences length increase. However, the GIHH is a human-designed hyper-heuristic which demanded several years of research in order to be completed and achieve good results in the 6 domains problems provided by HyFlex. Although, the good performance obtained by the GIHH in the domains from HyFlex,  it is possible to realize that the GIHH was also unable to achieve the best known results for the PSP domain.
+
+\begin{table}[]
+	\centering
+	\caption{Best results found by the best generated high level heuristic B_HLH, best results found by GIHH and the best know results O(x*)}
+	\label{tab:gihhandbhlh}
+	\begin{tabular}{cccccccccccc}
+		Inst         & 1 & 2 & 3 & 4  & 5  & 6  & 7  & 8  & 9  & 10 & 11 \\ \hline
+		B\_HLH  & 9 & 9 & 7 & 13 & 19 & 20 & 33 & 32 & 46 & 40 & 41 \\ \hline
+		GIHH (max)   & 9 & 9 & 8 & 13 & 22 & 21 & 35 & 37 & 49 & 43 & 45 \\ \hline
+		O(x*)        & 9 & 9 & 8 & 14 & 23 & 21 & 36 & 42 & 53 & 48 & 50
+	\end{tabular}
+\end{table}
+
+
+
+
+%A interesting point to note is that the best selection mechanism was found in GExp-1 with a fixed human-designed acceptance criterion, which was designed just to accept solutions better or equal. And the acceptance criteria were evolved using the best selection mechanism found. Finally
+%
+%
+%
+% second the selection mechanism used to generate those acceptance criteria was the best found in the GExp-1 and in this experiment it was used a fixed human-designed acceptance criterion which has the same behavior from the generated ones this fact rises a question maybe the GExp-2 found those acceptance criteria because the EG was trained using a selection mechanism which was found with a acceptance criterion  
+
+
+ 
+ 
+
+
+	
+
+
 
 
 
