@@ -348,28 +348,26 @@ placement = htp
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Bare Demo of IEEEtran.cls\\ for IEEE Conferences}
+\title{Automated Design of Hyper-Heuristics Components Applied to the PSP Problem}
 
 
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
-\author{\IEEEauthorblockN{Michael Shell}
-\IEEEauthorblockA{School of Electrical and\\Computer Engineering\\
-Georgia Institute of Technology\\
-Atlanta, Georgia 30332--0250\\
-Email: http://www.michaelshell.org/contact.html}
+
+\author{\IEEEauthorblockN{Vidal D. Fontoura}
+\IEEEauthorblockA{Federal University of Parana \\ (DInf-UFPR), Curitiba - PR, Brazil\\
+Email: vdfontoura@inf.ufpr.br}
 \and
-\IEEEauthorblockN{Homer Simpson}
-\IEEEauthorblockA{Twentieth Century Fox\\
-Springfield, USA\\
-Email: homer@thesimpsons.com}
+\IEEEauthorblockN{Aurora T. R. Pozo}
+\IEEEauthorblockA{Federal University of Parana \\ (DInf-UFPR), Curitiba - PR, Brazil\\
+Email: aurora@inf.ufpr.br}
 \and
-\IEEEauthorblockN{James Kirk\\ and Montgomery Scott}
-\IEEEauthorblockA{Starfleet Academy\\
-San Francisco, California 96678--2391\\
-Telephone: (800) 555--1212\\
-Fax: (888) 555--1212}}
+\IEEEauthorblockN{Roberto Santana Hermida}
+\IEEEauthorblockA{University of the Basque Country\\
+Barrio Sarriena s/n 48940 Leioa Bizkaia\\
+Email: roberto.santana@ehu.es
+}}
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -408,7 +406,7 @@ Fax: (888) 555--1212}}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-The abstract goes here.
+Proteins are structures, composed by amino-acids, and have a important role in nature. These structures are formed by a process called protein folding. This process is not completely understood and it is considered one of the most challenging modern problems. This problem is usually called as Protein Structure Prediction (PSP) and can be considered as minimization problem. Hence, many heuristics strategies have been applied in order to find protein structures that minimizes its free energy. However, these strategies have difficulties on finding the optimal solutions to the longer sequences of amino-acids, due, its the complexity of the problem and the huge amount of local optima. The hyper-heuristics framework are usually useful in this kind of context since they tries to combine different heuristics strengths into a single framework. However, there is lack of works whose aim the automated design of hyper-heuristics components. Sabar et al. \cite{sabar2015automatic} proposed the automated design of high level heuristics to hyper-heuristics framework and evaluated its performance by applying in the 6 domain problems from HyFlex \cite{ochoa2012hyflex} framework. The work of Sabar et al. \cite{sabar2015automatic} influenced this paper to chase the generation of high level components to a hyper-heuristic framework to the PSP problem.
 \end{abstract}
 
 % no keywords
@@ -528,7 +526,9 @@ The present paper proposes the use of a grammatical evolution GE to generate hig
 
 \section{Hyper-Heuristics}
 
-Hyper-Heuristics can be seen as a methodology to select or create heuristics for a given moment of the search. Motivated by the fact that different heuristics impose different strengths and weakness. Therefore, it makes sense to merge them into one framework. Burke et al. \cite{burke2010classification} recently defined hyper-heuristics as "an automated methodology for selecting or generating heuristics to solve hard computational search problems". Over the years, these methodologies have demonstrated success in solving a wide range of real world problems. Mainly, a generic hyper-heuristic framework is compose of two main components known as high-level and low-level heuristics. Figure \ref{fig:HyperHeuristics} shows a general scheme of hyper-heuristic frameworks. The high and low level are separated by a domain barrier which means that the low level piece is problem dependent while the high level component do not require any knowledge of the problem domain. Ideally, if one wants to apply a hyper-heuristic framework to a different problem domain: it is possible to do it by changing only the low-level component no changes should be required in the high-level. It is responsibility from the high-level component to manage the selection or generation of which heuristic should be applied at each decision point. The low-level component corresponds to a pool of heuristics or heuristic components \cite{sabar2015automatic}. 
+%Hyper-Heuristics can be seen as a methodology to select or create heuristics for a given moment of the search. 
+
+Motivated by the fact that different heuristics impose different strengths and weakness. Therefore, it makes sense to merge them into one framework. Burke et al. \cite{burke2010classification} recently defined hyper-heuristics as "an automated methodology for selecting or generating heuristics to solve hard computational search problems". Over the years, these methodologies have demonstrated success in solving a wide range of real world problems. Mainly, a generic hyper-heuristic framework is compose of two main components known as high-level and low-level heuristics. Figure \ref{fig:HyperHeuristics} shows a general scheme of hyper-heuristic frameworks. The high and low level are separated by a domain barrier which means that the low level piece is problem dependent while the high level component do not require any knowledge of the problem domain. Ideally, if one wants to apply a hyper-heuristic framework to a different problem domain: it is possible to do it by changing only the low-level component no changes should be required in the high-level. It is responsibility from the high-level component to manage the selection or generation of which heuristic should be applied at each decision point. The low-level component corresponds to a pool of heuristics or heuristic components \cite{sabar2015automatic}. 
 
 
 \begin{figure}[htb!] \label{fig:HyperHeuristics}
@@ -539,10 +539,14 @@ Hyper-Heuristics can be seen as a methodology to select or create heuristics for
 
 
 
-Recently Burke et al. \cite{burke2010classification} classified hyper-heuristic frameworks based on the source of feedback during the learning process and the nature of the search space. In the case of the source of feedback Burke el al. \cite{burke2010classification} mention 3 possibilities: online, offline and no learning. If the hyper-heuristic framework uses information gathered during the problem solving it is considered as an online framework. An offline framework requires a training phase to gather information in order to use later in the validation phase. No learning occurs when no feedback is provided to the hyper-heuristic framework \cite{sabar2015automatic}. The nature of the search space can be either selecting or generating heuristics for the underlying problem. Next will be analyzed both kinds of high-level heuristics.
+%Recently Burke et al. \cite{burke2010classification} classified hyper-heuristic frameworks based on the source of feedback during the learning process and the nature of the search space. In the case of the source of feedback Burke el al. \cite{burke2010classification} mention 3 possibilities: online, offline and no learning. If the hyper-heuristic framework uses information gathered during the problem solving it is considered as an online framework. An offline framework requires a training phase to gather information in order to use later in the validation phase. No learning occurs when no feedback is provided to the hyper-heuristic framework \cite{sabar2015automatic}. The nature of the search space can be either selecting or generating heuristics for the underlying problem. Next will be analyzed both kinds of high-level heuristics.
+
+Recently Burke et al. \cite{burke2010classification} classified the hyper-heuristics framework based on the nature of the search space: can be either selecting or generating heuristics for the underlying problem. Next will be analyzed both kinds of high-level heuristics.
+
 
 \begin{itemize}
-	\item Selecting Heuristics: The majority of hyper-heuristic frameworks published define high level heuristics to select low level heuristics. In general, these frameworks operate using a set of human-designed low level heuristics, usually called pool of heuristics. The pool can contain both constructive or perturbative heuristics. The objective of the hyper-heuristic framework is to select the heuristic, from the pool, which most suits at a given moment. The main idea behind this: is that the strength of several heuristics can be combined into a single framework in order to better explore the search space. Most of the proposed selection mechanisms use simple rules to select the low level heuristics based on their past performance \cite{sabar2015automatic}.
+	\item Selecting Heuristics: The majority of hyper-heuristic frameworks published define high level heuristics to select low level heuristics. In general, these frameworks operate using a set of human-designed low level heuristics, usually called pool of heuristics. The pool can contain both constructive or perturbative heuristics. The objective of the hyper-heuristic framework is to select the heuristic, from the pool, which most suits at a given moment. The main idea behind this: is that the strength of several heuristics can be combined into a single framework in order to better explore the search space. 
+%	Most of the proposed selection mechanisms use simple rules to select the low level heuristics based on their past performance \cite{sabar2015automatic}.
 	\item Generating Heuristics: In this case, the hyper-heuristic framework starts with a set subcomponents from low level heuristics and have the goal of fabricate new low level heuristics with it. Genetic programming is reported as a good strategy to combine and generated new heuristics for the SAT, scheduling and bin-packing problems \cite{sabar2015automatic}.
 \end{itemize}
 
@@ -550,12 +554,12 @@ Recently Burke et al. \cite{burke2010classification} classified hyper-heuristic 
 
 \section{Genetic Programming}
 
-Genetic Programming (GP) \cite{burke2009exploring} is a sub-field from the program synthesis which uses ideas from the evolution theory to produce programs. The principle factors from the evolutionary computation are inheritance, reproduction/mutation and selection of the fittest. These factors drives the evolution of programs using genetic programming. Initially, a random-generated population of programs is created. Using a selection method to select good individuals for reproduction. Then the reproduction and mutation steps takes place in order to generate an offspring. Finally, the offspring is evaluated to assign a fitness value and based on this value the offspring can either enter or not in the population. Genetic programming is a method to generate syntactically valid programs and the fitness function is used to decide which one is the most suitable for a given problem. Traditionally, in genetic programming, the programs that compose the population are represented using a tree structure. However, other structures that can be evolved exists, for instance: linear sequences of instructions and grammatic expressions. 
+Genetic Programming (GP) \cite{burke2009exploring} is a sub-field from the program synthesis which uses ideas from the evolution theory to produce programs. The principle factors from the evolutionary computation are inheritance, reproduction/mutation and selection of the fittest. Initially, a random-generated population of programs is created. Using a selection method to select good individuals for reproduction. Then the reproduction and mutation steps takes place in order to generate an offspring. Finally, the offspring is evaluated to assign a fitness value and based on this value the offspring can either enter or not in the population. Genetic programming is a method to generate syntactically valid programs and the fitness function is used to decide which one is the most suitable for a given problem. Traditionally, in genetic programming, the programs that compose the population are represented using a tree structure. However, other structures that can be evolved exists, for instance: linear sequences of instructions and grammatic expressions. 
 
 \section{Grammatical Evolution}
 \label{sec:grammaticalEvolution}
 
-Grammatical Evolution (GE) is a relatively new technique from the evolutionary computing, introduced by Ryan el al. \cite{ryan1998grammatical} and it is a type of GP which utilizes a grammatic to generate programs. Just like in GP the main goal is to find a executable program or piece of code, which have a good fitness value. Ryan el al. \cite{ryan1998grammatical} proposes one technique to generate programs or fragments for any language using BNF definitions. This technique can be used to evolve programs though a evolution process. The GE uses a mapping mechanism between the genotype (coded individuals by integer vectors) and phenotype (generated programs to resolve a problem). The Backus Naur Form (BNF) notation is used to represent a grammatic from a language in form of production rules. A BNF grammatic consists in a set of terminals, which are items that are allowed to the language, for instance: +, -, *, / etc and non-terminals, which can be expanded into one or more terminals. The grammatic can be expressed as a tuple ${N,T,P,S}$, where $N$ is a set of non-terminals, $T$ a set of terminals, $P$ a set of production rules that maps the elements $N$ to $T$; finally, $S$, a symbol to represent the initial point contained in $N$.
+Grammatical Evolution (GE) is a relatively new technique from the evolutionary computing, introduced by Ryan el al. \cite{ryan1998grammatical} and it is a type of GP which utilizes a grammar to generate programs. Just like in GP the main goal is to find a executable program or piece of code, which have a good fitness value. Ryan el al. \cite{ryan1998grammatical} proposes one technique to generate programs or fragments for any language using BNF definitions. This technique can be used to evolve programs though a evolution process. The GE uses a mapping mechanism between the genotype (coded individuals by integer vectors) and phenotype (generated programs to resolve a problem). The Backus Naur Form (BNF) notation is used to represent a grammatic from a language in form of production rules. A BNF grammatic consists in a set of terminals, which are items that are allowed to the language, for instance: +, -, *, / etc and non-terminals, which can be expanded into one or more terminals. The grammatic can be expressed as a tuple ${N,T,P,S}$, where $N$ is a set of non-terminals, $T$ a set of terminals, $P$ a set of production rules that maps the elements $N$ to $T$; finally, $S$, a symbol to represent the initial point contained in $N$.
  
 \begin{center}
 	
@@ -608,7 +612,34 @@ And $P$ can be represented as:
 \end{table}
 
 
-Ryan et al. \cite{ryan1998grammatical}  proposed the use of genetic algorithm (GA) to control which choices should be made, in this sense allowing the GA to select which production rules should be utilized. An individual (chromosome) consists in variable-length vector of integers and it is called the genotype. 
+Ryan et al. \cite{ryan1998grammatical}  proposed the use of genetic algorithm (GA) to control which choices should be made, in this sense allowing the GA to select which production rules should be utilized. An individual (chromosome) consists in variable-length integer vector and it is called the genotype. Algorithm \ref{alg:GE} presents the pseudo code of a grammatical evolution program. Except for lines 11, 12 and the introduction of grammar file to decode the integer vectors into programs, the GE looks very similar to simple GA.
+
+\begin{algorithm}[htb]
+	\fontsize{8pt}{10pt}\selectfont
+	\caption{Pseudo code from the Grammatical Evolution}
+	\label{alg:GE}
+	\KwIn{GF -- Grammar File}
+	\Begin{
+		$population \gets$ Create population\;
+		$programas \gets$ Maps the $population$ to programs using $GF$\;
+		Execute the $program$\;
+		Assign fitness value to the solutions of $population$ according with the output obtained by the respective decoded program\;
+		\While{Stop condition not reached}{
+			$parents \gets $ Select individuals to crossover\;
+			$offspring \gets$ Crossover($pais$)\;		
+			$populacao \gets$  Replacement\;
+			
+			Apply the \textit{Prune} operator to the $offspring$\;
+			Apply the \textit{Duplicate} operator  to the $offspring$\;
+			Apply the \textit{Mutation} operator to the $offspring$\;
+			$programs \gets$ Maps $offspring$ to programs using $GF$\;
+			Execute $programs$\;
+			Assign \textit{fitness} value to solutions $offspring$ according with the output obtained by the respective decoded program\;
+			$population \gets$ Replacement\;
+		}
+		\Return{Best program from the $population$}\;
+	}
+\end{algorithm}
 
 
 For the sake of comprehension the chromosome mapping process will be demonstrated using the Grammar \ref{gram:gramatica}. The Algorithm \ref{alg:pseudocodigogrammar} presents the general template of the generated programs. The expression $\langle expr \rangle$ presented in line 2 is replaced by mathematical expressions coded by the chromosomes (integer vectors).
@@ -639,49 +670,24 @@ Table \ref{tab:productionRules} summarizes the number of choices associated with
 
 %exceto pela aplicação dos operadores \textit{Duplicate} e \textit{Prune} (linhas 10 e 11 do Algoritmo  \ref{alg:GE}) e o processo de decodificação e execução dos programas descendentes (linhas 13 e 14 do Algoritmo \ref{alg:GE}).
 
-\begin{algorithm}[htb]
-	\fontsize{8pt}{10pt}\selectfont
-	\caption{Pseudo code from the Grammatical Evolution}
-	\label{alg:GE}
-	\KwIn{GF -- Grammar File}
-	\Begin{
-		$population \gets$ Create population\;
-		$programas \gets$ Maps the $population$ to programs using $GF$\;
-		Execute the $program$\;
-		Assign fitness value to the solutions of $population$ according with the output obtained by the respective decoded program\;
-		\While{Stop condition not reached}{
-			$parents \gets $ Select individuals to crossover\;
-			$offspring \gets$ Crossover($pais$)\;		
-			$populacao \gets$  Replacement\;
-			
-			Apply the \textit{Prune} operator to the $offspring$\;
-			Apply the \textit{Duplicate} operator  to the $offspring$\;
-			Apply the \textit{Mutation} operator to the $offspring$\;
-			$programs \gets$ Maps $offspring$ to programs using $GF$\;
-			Execute $programs$\;
-			Assign \textit{fitness} value to solutions $offspring$ according with the output obtained by the respective decoded program\;
-			$population \gets$ Replacement\;
-		}
-		\Return{Best program from the $population$}\;
-	}
-\end{algorithm}
 
-\section{Genetic Programming as Hyper-Heuristic to Generate Heuristics}
-\label{subsubsection:PGasHH}
-
-In this section will be presented how GP/GE can be used as mechanism to generate heuristics. Burke et al. \cite{burke2009exploring} describes that many authors mentioned the great suitability of GP to automatically generate new heuristics. Burke et al. \cite{burke2009exploring} also describes some advantages of using this technique. 
-
-\begin{itemize}
-	\item GP uses variable-length chromosomes. Usually, is not possible to define a ideal length to represent heuristics from a given domain problem. 
-	\item GP produces executable data structures and heuristics 
-	usually are expressed as programs or algorithms.
-	\item Ease to identify good characteristics from the problem domain in order to define a terminal set which will be used by the GP.
-	\item Human designed heuristics can be easily expressed in the same language used to create the search space from the GP. The function set, relevant from the problem can be easily determined. Additionally the GP can be supported by a specific grammar which is the case of the GE.
-\end{itemize}
-
-These advantages presented by Burke et al. \cite{burke2009exploring} are also characteristics from the GE, since it is a extension from genetic programming and holds the same features (variable-length, produces executable structures, etc).
-
-Some disadvantages are also described by Burke et al. \cite{burke2009exploring}, for instance: each execution of the GE can return different results because its stochastic behavior. Thus, it is necessary to execute multiple times, in order to obtain a better understanding of the quality from the heuristics that can be achieved. Another disadvantage refers to the parameter configuration, which is usually found by trial and error.
+%TODO: check if this will be needed
+%\section{Genetic Programming as Hyper-Heuristic to Generate Heuristics}
+%\label{subsubsection:PGasHH}
+%
+%In this section will be presented how GP/GE can be used as mechanism to generate heuristics. Burke et al. \cite{burke2009exploring} describes that many authors mentioned the great suitability of GP to automatically generate new heuristics. Burke et al. \cite{burke2009exploring} also describes some advantages of using this technique. 
+%
+%\begin{itemize}
+%	\item GP uses variable-length chromosomes. Usually, is not possible to define a ideal length to represent heuristics from a given domain problem. 
+%	\item GP produces executable data structures and heuristics 
+%	usually are expressed as programs or algorithms.
+%	\item Ease to identify good characteristics from the problem domain in order to define a terminal set which will be used by the GP.
+%	\item Human designed heuristics can be easily expressed in the same language used to create the search space from the GP. The function set, relevant from the problem can be easily determined. Additionally the GP can be supported by a specific grammar which is the case of the GE.
+%\end{itemize}
+%
+%These advantages presented by Burke et al. \cite{burke2009exploring} are also characteristics from the GE, since it is a extension from genetic programming and holds the same features (variable-length, produces executable structures, etc).
+%
+%Some disadvantages are also described by Burke et al. \cite{burke2009exploring}, for instance: each execution of the GE can return different results because its stochastic behavior. Thus, it is necessary to execute multiple times, in order to obtain a better understanding of the quality from the heuristics that can be achieved. Another disadvantage refers to the parameter configuration, which is usually found by trial and error.
 
 %
 %\subsubsection{Basic Approach}
@@ -789,52 +795,57 @@ The next step consists of evolving a population of integer vectors, initially ra
 \subsection{Fitness Function}
 \label{subsection:fitnessFunction}
 
+In order to evaluate the generated individuals during the search progress, a fitness function was designed. The fitness function consisted on running the hyper-heuristic framework against three random selected instances from a set of eleven HP instances used in the previous works. Each run will be executed for one minute and will return the best HP solution found. The fitness value associated with the returned solution is then normalized between 0 and 1. The fitness of an individual, of the GE, it is the sum of the three outcomes from each execution of the three randomly selected instances. Hence, the best possible fitness value is 3 and the worst is 0.
+ The motivation behind executing the high level heuristic (individual) against three HP instances is that executing with only one it might not be sufficient to train a high level heuristic to obtain good results in various instances of the HP model.
+
+
 %//TODO: MUDAR aqui
 
-In order to evaluate the generated individuals during the search progress, a fitness function was designed based on the Sabar et al. \cite{sabar2015automatic} work. The probability of selecting an individual, changes according to the quality of the best solution returned by the execution of the hyper-heuristic framework using the high level heuristics coded by the individual. 
-
-Suppose that $f_i$, $f_o$ represents respectively the quality of the input and output solution and $P_h$ the vector of probabilities of selecting the individuals from population. Now suppose that when applying the $i_{th}$ individual and it obtained an improvement the reward will be calculated using Equation \ref{eq:fitnessFunction}.
-
-\begin{equation} {}
-\label{eq:fitnessFunction}
-Ph[i] = Ph[i] + \sigma 	
-\end{equation} 
-
-Where $\sigma = (f_i - f_o)/(f_i + f_o)$. 
-
-And all other individuals  $j \neq i$ should be penalized using Equation \ref{eq:fitnessPenalizeFunction}
-
-\begin{equation} {}
-\label{eq:fitnessPenalizeFunction}
-Ph[j] = Ph[j] - (\sigma / (Nh - 1))
-\end{equation}
-
-Such that  $j \in \{1, ..., Nh\} ~e~ j \neq i$. And $Nh$ the number of individuals.
-
-Otherwise (if the output solution is worst than the input), a penalization should be applied to the $i_{th}$ individual using Equation \ref{eq:fitnessBadFunction}.
-
- \begin{equation} {}
- \label{eq:fitnessBadFunction}
- Ph[i] = Ph[i] - |\sigma \times \alpha|
- \end{equation}
- 
- Where $\alpha =$ current iteration $/$ total number of iterations.
- 
- And all other individuals $j \neq i$ should receive a reward using Equation \ref{eq:fitnessOtherFunction} 
- 
- \begin{equation} {}
- \label{eq:fitnessOtherFunction}
- Ph[j] = Ph[j] + (|\sigma| \times \alpha / (Nh -1))
- \end{equation}
- 
- Such that  $j \in \{1, ..., Nh\} ~e~ j \neq i$. Where $Nh$ = number of individuals and $\alpha =$ current iteration $/$ total number of iterations.
- 
- The motivation behind decreasing the probability from the other individuals is to reduce the chances of those individuals to be selected. Initially, the probability os each individual is calculated, decoding the respective selection mechanism and acceptance criterion and executing it within a hyper-heuristic framework for a defined number of iterations.
-  
+%In order to evaluate the generated individuals during the search progress, a fitness function was designed based on the Sabar et al. \cite{sabar2015automatic} work. The probability of selecting an individual, changes according to the quality of the best solution returned by the execution of the hyper-heuristic framework using the high level heuristics coded by the individual. 
+%
+%Suppose that $f_i$, $f_o$ represents respectively the quality of the input and output solution and $P_h$ the vector of probabilities of selecting the individuals from population. Now suppose that when applying the $i_{th}$ individual and it obtained an improvement the reward will be calculated using Equation \ref{eq:fitnessFunction}.
+%
+%\begin{equation} {}
+%\label{eq:fitnessFunction}
+%Ph[i] = Ph[i] + \sigma 	
+%\end{equation} 
+%
+%Where $\sigma = (f_i - f_o)/(f_i + f_o)$. 
+%
+%And all other individuals  $j \neq i$ should be penalized using Equation \ref{eq:fitnessPenalizeFunction}
+%
+%\begin{equation} {}
+%\label{eq:fitnessPenalizeFunction}
+%Ph[j] = Ph[j] - (\sigma / (Nh - 1))
+%\end{equation}
+%
+%Such that  $j \in \{1, ..., Nh\} ~e~ j \neq i$. And $Nh$ the number of individuals.
+%
+%Otherwise (if the output solution is worst than the input), a penalization should be applied to the $i_{th}$ individual using Equation \ref{eq:fitnessBadFunction}.
+%
+% \begin{equation} {}
+% \label{eq:fitnessBadFunction}
+% Ph[i] = Ph[i] - |\sigma \times \alpha|
+% \end{equation}
+% 
+% Where $\alpha =$ current iteration $/$ total number of iterations.
+% 
+% And all other individuals $j \neq i$ should receive a reward using Equation \ref{eq:fitnessOtherFunction} 
+% 
+% \begin{equation} {}
+% \label{eq:fitnessOtherFunction}
+% Ph[j] = Ph[j] + (|\sigma| \times \alpha / (Nh -1))
+% \end{equation}
+% 
+% Such that  $j \in \{1, ..., Nh\} ~e~ j \neq i$. Where $Nh$ = number of individuals and $\alpha =$ current iteration $/$ total number of iterations.
+% 
+% The motivation behind decreasing the probability from the other individuals is to reduce the chances of those individuals to be selected. Initially, the probability os each individual is calculated, decoding the respective selection mechanism and acceptance criterion and executing it within a hyper-heuristic framework for a defined number of iterations.
+%  
 \subsection{Stopping Criterion}
 \label{sub:criterioParada}
 
-	//TODO: CHECK THIS
+To stop the GE process a maximum number of evaluations was setup to 60000. This value was defined based on the work  \cite{ryan1998grammatical} where the grammatical evolution general process is introduced.
+
 %%  Para terminar o processo da EG um número máximo de iterações que não obtêm melhora será utilizado como condição de parada. Note que este critério de parada é referente à parada do processo da EG e não das execuções dos indivíduos dentro do \textit{framework} hiper-heurístico, que ocorrem durante o progresso da EG. 
   
   \subsection{Low Level Heuristics} 
@@ -862,21 +873,23 @@ Otherwise (if the output solution is worst than the input), a penalization shoul
 	\item \textit{Opposite Mutation} (OM): This heuristic exchanges directions, for the opposite, within a sequence of genes between two genes $(i,j)$ selected at random. The direction 0 ($F$) does not have a opposite, therefore it is maintained. 
 	
  \end{itemize} 	 
-  
-\subsection{Process of the EG} 
-
-The main steps of the proposed EG will be presented in this sub-section. Initially a population of individuals (high level heuristics) is randomly generated. The fitness value for the population is calculated inserting the individual within a hyper-heuristic framework and executing it for a predefined number of iterations. Iteratively select parent individuals to apply the operators (crossover, prune, duplicate, mutation) to generate the offspring. To evaluate the offspring the next steps are executed.
 
 
-
-\begin{enumerate}
-	
-	\item Each individual is decoded into a selection mechanism and a acceptance criterion. The terminals described earlier in this section will be used as input for the selection mechanism.
-	
-
-\end{enumerate}
-
-
+%TODO: check  the necessity of this subsection
+%\subsection{Process of the EG} 
+%
+%The main steps of the proposed EG will be presented in this sub-section. Initially a population of individuals (high level heuristics) is randomly generated. The fitness value for the population is calculated inserting the individual within a hyper-heuristic framework and executing it for a predefined number of iterations. Iteratively select parent individuals to apply the operators (crossover, prune, duplicate, mutation) to generate the offspring. To evaluate the offspring the next steps are executed.
+%
+%
+%
+%\begin{enumerate}
+%	
+%	\item Each individual is decoded into a selection mechanism and a acceptance criterion. The terminals described earlier in this section will be used as input for the selection mechanism.
+%	
+%
+%\end{enumerate}
+%
+%
 
 \section{Experiments}
 
@@ -971,7 +984,7 @@ In order to better investigate the relationship between the generated selection 
 
 In order to compare the generated high level heuristics with a already proposed hyper-heuristic strategy it was selected a state-of-art human-designed hyper-heuristic framework \cite{misir2012intelligent} which presented the best results applied to the 6 domain problems from HyFlex framework \cite{ochoa2012hyflex}. Misir et al. \cite{misir2012intelligent} provided us the source code from the  Generic Intelligent Hyper-heuristic (GIHH) and then it was executed against the PSP problem that we implemented using the HyFlex framework.  
 
-Table \cite{tab:gihhandbhlh} presents the best results, for each instance, found by the best generated high level heuristic (B_HLH), the best results found by the GIHH \cite{misir2012intelligent} and finally the best know results (O_x(*)). The B_HLH and the GIHH were executed 10 minutes. It is possible to note that the B_HLH found worst results than the GIHH as the sequences length increase. However, the GIHH is a human-designed hyper-heuristic which demanded several years of research in order to be completed and achieve good results in the 6 domains problems provided by HyFlex. Although, the good performance obtained by the GIHH in the domains from HyFlex,  it is possible to realize that the GIHH was also unable to achieve the best known results for the PSP domain.
+Table \ref{tab:gihhandbhlh} presents the best results, for each instance, found by the best generated high level heuristic (B_HLH), the best results found by the GIHH \cite{misir2012intelligent} and finally the best know results (O_x(*)). The B_HLH and the GIHH were executed 10 minutes. It is possible to note that the B_HLH found worst results than the GIHH as the sequences length increase. However, the GIHH is a human-designed hyper-heuristic which demanded several years of research in order to be completed and achieve good results in the 6 domains problems provided by HyFlex. Although, the good performance obtained by the GIHH in the domains from HyFlex,  it is possible to realize that the GIHH was also unable to achieve the best known results for the PSP domain.
 
 \begin{table}[]
 	\centering
@@ -1108,19 +1121,18 @@ Table \cite{tab:gihhandbhlh} presents the best results, for each instance, found
 
 
 \section{Conclusion}
-The conclusion goes here.
+In this work, the automatic design of high level heuristics to a hyper-heuristic framework to the PSP problem was explored. The PSP is very challenging problem  with lots of local optimas and a very complex landscape. Many authors explored the PSP problem with heuristic methods. However, they majority have difficult to achieve the best known results when executing against longer sequences. Usually the hyper-heuristic frameworks fits well in this kinda of complex scenario. Hence, the goal of this paper was to generate, using a grammatical evolution strategy, selection mechanisms and acceptance criteria to a hyper-heuristic framework and evaluate its performance and behavior within a set of eleven HP instances. The GE was executed, using three randomly selected HP instances, in order to generate the high level heuristics and later the best individuals found in the experiments were executed again in using the eleven HP instances. 
+
+Three GE experiments were designed: first generating only selection mechanisms within a fixed acceptance criterion; second generating only acceptance criteria using the best selection mechanism found in the first; finally both high level heuristics were generated in parallel. The results showed that better high level heuristics were found when generating them separately. Unfortunately when analyzing the behavior of the generated high level heuristics against the eleven instances it was possible to see that they were not able to achieve the best known results for the longer sequences. However, when comparing with a good state-of-art human-designed hyper-heuristic framework (GIHH) \cite{misir2012intelligent} the results are similar. This fact shows that it is possible to automate the creation of high level heuristics and obtain results close to the state-of-art hyper-heuristics frameworks.
+
+ Another finding of this work was the behavior of the bests generated acceptance criteria. It was noticed that the bests of them behave just like "a better or equal" human-designed move acceptance strategy. Also some of the generated acceptance criterion were always accepting worst solution and it was noticed that this decreased the fitness of the individual whom coded the genotype. Other generated acceptance criteria were never accepting any worst solutions. This demonstrates that the GE is able generate at least three types of acceptance criterion.  
+
+  
 
 
 
 
 % conference papers do not normally have an appendix
-
-
-% use section* for acknowledgment
-\section*{Acknowledgment}
-
-
-The authors would like to thank...
 
 
 
