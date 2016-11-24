@@ -1,0 +1,23 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: bare_conf.aux
+White space in argument---line 23 of file bare_conf.aux
+ : \citation{santana2008protein
+ :                              }
+I'm skipping whatever remains of this command
+The style file: plain.bst
+Database file #1: references.bib
+Repeated entry---line 467 of file references.bib
+ : @article{qian2004improvement
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 478 of file references.bib
+ : @article{krieger2009improving
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 527 of file references.bib
+ : @article{santana2008protein
+ :                            ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "krasnogor1999protein"
+Warning--empty journal in benitez2015algoritmo
+Warning--empty journal in misir2012intelligent
+(There were 4 error messages)

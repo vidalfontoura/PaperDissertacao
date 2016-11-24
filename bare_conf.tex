@@ -433,12 +433,21 @@ The protein structure prediction (PSP) has a wide range of biotechnology and med
 obtaining experimental structures from incomplete nuclear magnetic
 resonance data  \cite{shen2009novo}.  
 
-The determination of the native structure of a protein is a hard task even for the modern super computers. The difficulty is due to the huge search space to test all possible configurations that a given protein can adopt. Many models to represent the proteins structures exists and can be utilized to simulated the folding process. Although there exists extremely detailed models, these representations are computational very expensive. Hence, many authors \cite{custodio2004investigation,hsu2003growth,lin2011protein,unger1993genetic,santana2008protein,custodio2014multiple, garza2012locality} used simplified models to represent the protein structures. A useful model for this purpose is the Hydrophobic-Polar (HP) model presented by Lau and Dill \cite{lau1989lattice}. This model generalizes the amino-acids that composes the proteins into just two types H or P. And, a grid (2D) or cube (3D) can be used to represent the conformations that a protein can adopt. Each conformation has an energy associated \cite{unger1993genetic}. 
+The determination of the native structure of a protein is a hard task even for the modern super computers. The difficulty is due to the huge search space to test all possible configurations that a given protein can adopt. Many models to represent the proteins structures exists and can be utilized to simulated the folding process. Although there exists extremely detailed models, these representations are computational very expensive. Hence, many authors \cite{custodio2004investigation,hsu2003growth,lin2011protein,unger1993genetic,santana2008protein,custodio2014multiple, garza2012locality} used simplified models to represent the protein structures. A useful model for this purpose is the Hydrophobic-Polar (HP) model presented by Lau and Dill \cite{lau1989lattice}. This model generalizes the amino-acids that composes the proteins into just two types H or P. And, a grid (2D) or cube (3D) can be used to represent the conformations that a protein can adopt. Each conformation has an energy associated \cite{unger1993genetic}. 
+
 % Para isto, é necessário considerar as interações entre os aminoácidos. Uma interação ocorre quando o par de aminoácidos é adjacente no \textit{grid}/cubo e não é adjacente na sequência. No modelo HP existem apenas três: (HP, HH e PP), mas somente interações hidrofóbicas (HH) influenciam no valor de energia referente a uma conformação \cite{unger1993genetic}. A questão que surge é como buscar, dentre as possíveis conformações, aquela cuja a energia seja mínima.
 
-Many heuristics strategies were developed to find conformations of minimum energy, using the HP model. These approaches use genetic algorithms \cite{unger1993genetic}, ant colony optimization \cite{shmygelska2002ant, shmygelska2003improved}, estimation distribution algorithms \cite{santana2008protein }, among others\cite{gabriel2012algoritmos} Although, there are different strategies already proposed for the PSP, all of them face difficulties to reach the optimal configurations when the length of amino-acids sequences increases. This motivate the study here presented. The goal is to use a pool of heuristics proposed in the literature managed by a hyper-heuristic strategy \cite{burke2013hyper}.  Hence, different heuristics have different strengths and weakness. It makes sense to merge them into one framework and let a high-level strategy to manage the application of them.  Burke et al. \cite{burke2010classification} recently defined hyper-heuristics as "an automated methodology for selecting or generating heuristics to solve hard computational search problems". Over the years, these methodologies have demonstrated success in solving a wide range of real world problems.  However, there are a lack of works that use this approach to solve the PSP problem.
+Many heuristics strategies were developed to find conformations of minimum energy, using the HP model. These approaches use genetic algorithms \cite{unger1993genetic}, ant colony optimization \cite{shmygelska2002ant, shmygelska2003improved}, estimation distribution algorithms \cite{santana2008protein }, among others\cite{gabriel2012algoritmos}
 
-The paper describes the automated generation of hyper-heuristics to solve the PSP problem. The hyper-heuristic includes two main components:  a selection mechanisms and acceptance criteria.  Both components are generated using grammatical evolution(GE), which is a kind of genetic programming (PG). A set of experiment is made to evaluate the approach using eleven PSP instances. The results are compared with the results of the literature.  This paper is organized ?
+ Although, there are different strategies already proposed for the PSP, all of them face difficulties to reach the optimal configurations when the length of amino-acids sequences increases. This motivate the study here presented. The goal is to use a pool of heuristics proposed in the literature managed by a hyper-heuristic strategy \cite{burke2013hyper}.  Hence, different heuristics have different strengths and weakness. It makes sense to merge them into one framework and let a high-level strategy to manage the application of them. 
+
+ Burke et al. \cite{burke2010classification} recently defined hyper-heuristics as "an automated methodology for selecting or generating heuristics to solve hard computational search problems". Over the years, these methodologies have demonstrated success in solving a wide range of real world problems.  However, there are a lack of works that use this approach to solve the PSP problem.
+
+The paper describes the automated generation of hyper-heuristics to solve the PSP problem. The hyper-heuristic includes two main components:  a selection mechanisms and acceptance criteria.  Both components are generated using grammatical evolution(GE), which is a kind of genetic programming (PG). A set of experiment is made to evaluate the approach using eleven PSP instances. The results are compared with the results of the literature.  
+
+
+
+This paper is organized ?
 %TODO: if this is necessary
 %The propose of this paper is based on a previous work developed by Sabar et al. \cite{sabar2015automatic}, which generates high level heuristics to six domain problems contained in the hyper-heuristic framework HyFlex \cite{ochoa2012hyflex}.
 
@@ -520,6 +529,8 @@ for the application of EDAs to 2D and 3D simplified protein folding problem. The
 The present paper proposes the use of a grammatical evolution GE to generate high level heuristics for a hyper heuristic framework that will be applied to the PSP problem.
 \section{Background}
 
+This section will present the background context in order to supply the readers with the necessary information, for a good comprehension of the concepts and techniques used by this paper.  
+
 
 \subsection{Hyper-Heuristics}
 
@@ -542,16 +553,28 @@ Recently Burke et al. \cite{burke2010classification} classified the hyper-heuris
 
 
 \begin{itemize}
-	\item Selecting Heuristics: The majority of hyper-heuristic frameworks published define high level heuristics to select low level heuristics. In general, these frameworks operate using a set of human-designed low level heuristics, usually called pool of heuristics. The pool can contain both constructive or perturbative heuristics. The objective of the hyper-heuristic framework is to select the heuristic, from the pool, which most suits at a given moment. The main idea behind this: the strength of several heuristics can be combined into a single framework in order to better explore the search space. 
+	\item Selecting Heuristics: The majority of hyper-heuristic frameworks published define high level heuristics to select low level heuristics. In general, these frameworks operate using a set of human-designed low level heuristics, usually called pool of heuristics. 
+	
+	
+%	The pool can contain both constructive or perturbative heuristics. 
+%	
+	
+	The objective of the hyper-heuristic framework is to select the heuristic, from the pool, which most suits at a given moment. The main idea behind this: the strength of several heuristics can be combined into a single framework in order to better explore the search space. 
 %	Most of the proposed selection mechanisms use simple rules to select the low level heuristics based on their past performance \cite{sabar2015automatic}.
 	\item Generating Heuristics: In this case, the hyper-heuristic framework starts with a set subcomponents from low level heuristics and have the goal of fabricate new low level heuristics with it. Genetic programming is reported as a good strategy to combine and generated new heuristics for the SAT, scheduling and bin-packing problems \cite{sabar2015automatic}.
 \end{itemize}
+
+A novel work presented by Sabar et al. \cite{sabar2015automatic}, uses GEP (gene expression programming a kind of genetic programming) with the goal of generating the components (high level heuristics) to a hyper-heuristic framework. The experiments presented by Sabar et al. \cite{sabar2015automatic}, using the 6 problem domains provided by the HyFlex hyper-heuristic framework, shown a impressive results comparing with other human-designed hyper-heuristic strategies from the state of art from the field of hyper-heuristics. This work inspired the present paper which has the objective of generating selection mechanism and acceptance criteria, through a grammatical evolution process, to a hyper-heuristic framework. 
 
 
 
 \subsection{Genetic Programming}
 
-Genetic Programming (GP) \cite{burke2009exploring} is a sub-field from the program synthesis which uses ideas from the evolution theory to produce programs. The main factors from the evolutionary computation are inheritance, reproduction/mutation and selection of the fittest. Initially, a random-generated population of programs is created. Using a selection method to select good individuals for reproduction. Then the reproduction and mutation steps takes place in order to generate an offspring. Finally, the offspring is evaluated to assign a fitness value and based on this value the offspring can either enter or not in the population. Genetic programming is a method to generate syntactically valid programs and the fitness function is used to decide which one is the most suitable for a given problem. Traditionally, in genetic programming, the programs that compose the population are represented using a tree structure. However, other structures that can be evolved exists, for instance: linear sequences of instructions and grammar expressions. 
+Genetic Programming (GP) \cite{burke2009exploring} is a sub-field from the program synthesis which uses ideas from the evolution theory to produce programs.
+
+% The main factors from the evolutionary computation are inheritance, reproduction/mutation and selection of the fittest. Initially, a random-generated population of programs is created. Using a selection method to select good individuals for reproduction. Then the reproduction and mutation steps takes place in order to generate an offspring. Finally, the offspring is evaluated to assign a fitness value and based on this value the offspring can either enter or not in the population. 
+
+%Traditionally, in genetic programming, the programs that compose the population are represented using a tree structure. However, other structures that can be evolved exists, for instance: linear sequences of instructions and grammar expressions. 
 
 Grammatical Evolution (GE) is a relatively new technique from the evolutionary computing, introduced by Ryan el al. \cite{ryan1998grammatical} and it is a type of GP which utilizes a grammar to generate programs. Just like in GP the main goal is to find a executable program or piece of code, which have a good fitness value. Ryan el al. \cite{ryan1998grammatical} proposes a technique to generate programs or fragments for any language using BNF (Backus Naur Form) definitions. This technique can be used to evolve programs though a evolution process. The GE uses a mapping mechanism between the genotype (coded individuals by integer vectors) and phenotype (generated programs to resolve a problem). The BNF notation is used to represent a grammar from a language in form of production rules. A BNF grammar consists in a set of terminals, which are items that are allowed to the language, for instance: +, -, *, / etc and non-terminals, which can be expanded into one or more terminals. The grammar can be expressed as a tuple ${N,T,P,S}$, where $N$ is a set of non-terminals, $T$ a set of terminals, $P$ a set of production rules that maps the elements $N$ to $T$; finally, $S$, a symbol to represent the initial point contained in $N$.
  
@@ -709,13 +732,24 @@ Table \ref{tab:productionRules} summarizes the number of choices associated with
 
 \section{Methodology}
 \label{sec:methodology}
-In this section will be presented the methodology defined for the grammatical evolution application for generating high level heuristics for a hyper-heuristic framework to the Protein Structure Prediction problem. The approach presented next is based on Sabar et al. \cite{sabar2015automatic}, which used GEP (gene expression programming) with the goal of generating the components to a hyper-heuristic framework for several problem domains. The experiments presented by Sabar et al. \cite{sabar2015automatic}, using the 6 problem domains provided by the HyFlex hyper-heuristic framework, shown a impressive results comparing with other hyper-heuristic strategies from the state of art. This paper explores grammatical evolution instead of gene expression programming and also it executes, in a different domain problem, using the PSP within HP-2d model. According to Krasnogor et al. \cite{krasnogor1999protein}  the relative representation have a better potential to achieve superior results. 
+In this section will be presented the methodology defined for the grammatical evolution application for generating high level heuristics for a hyper-heuristic framework to the Protein Structure Prediction problem. The approach presented next is based on Sabar et al. \cite{sabar2015automatic} work. 
 
-This representation was used to represent the chromosome within the PSP and the HP-2d model and will be explained next: the movements in the grid for each amino-acid are represented always based on the previous, that is why the representation is named relative. There are 3 possible movements within the HP-2d model: forward (F), left (L) and right (R). Hence, the following integer codification was used $F\rightarrow0$, $E\rightarrow1$ and $D\rightarrow2$. Thereby, the allowed alphabet can be represented as $\{0,1,2\}$.
+%This paper explores grammatical evolution instead of gene expression programming and also it executes, in a different domain problem, using the PSP within HP-2d model. 
+
+%TODO: maybe send the as well
+%see below TODO.
+%According to Krasnogor et al. \cite{krasnogor1999protein}  the relative representation have a better potential to achieve superior results. 
+
+%TODO: Sende that the low level heuristics piece
+%This representation was used to represent the chromosome within the PSP and the HP-2d model and will be explained next: the movements in the grid for each amino-acid are represented always based on the previous, that is why the representation is named relative. There are 3 possible movements within the HP-2d model: forward (F), left (L) and right (R). Hence, the following integer codification was used $F\rightarrow0$, $E\rightarrow1$ and $D\rightarrow2$. Thereby, the allowed alphabet can be represented as $\{0,1,2\}$.
 
 As mentioned before a hyper-heuristic framework is divided in two levels: high and low level heuristics. In this paper, the high level heuristics are composed by a selection mechanism and an acceptance criterion. The low level heuristics consists in a set of heuristics, selected from previous works, a memory mechanism and a fitness function. 
 
-Two terminal sets (one for the selection mechanisms and another for the acceptance criteria) were defined accordingly with the information that can be calculated within the history of the low level heuristics executions. The terminal sets were inspired by work \cite{sabar2015automatic}. The selection terminals is presented next:
+Two terminal sets (one for the selection mechanisms and another for the acceptance criteria) were defined accordingly with the information that can be calculated within the history of the low level heuristics executions. 
+
+%TODO: Check if this phrase would make sense
+%The terminal sets were inspired by work \cite{sabar2015automatic}. 
+The selection terminals is presented next:
 
 \begin{itemize}
 	\item RC (\textit{Reward Credit}): The reward that a given heuristic should receive based on its performance. The improvement is calculated, for the $i_{th}$ heuristic, using $M(i) = (|f1 -f2|/f1)*100$ if $f2< f1$, where $f1$ is the current fitness and $f2$ is the fitness of the generated solution by the $i_{th}$ heuristic.
