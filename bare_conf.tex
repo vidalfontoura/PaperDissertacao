@@ -756,7 +756,7 @@ In this section will be presented the methodology defined for the grammatical ev
 %TODO: Sende that the low level heuristics piece
 %This representation was used to represent the chromosome within the PSP and the HP-2d model and will be explained next: the movements in the grid for each amino-acid are represented always based on the previous, that is why the representation is named relative. There are 3 possible movements within the HP-2d model: forward (F), left (L) and right (R). Hence, the following integer codification was used $F\rightarrow0$, $E\rightarrow1$ and $D\rightarrow2$. Thereby, the allowed alphabet can be represented as $\{0,1,2\}$.
 
-As mentioned before a hyper-heuristic framework is divided in two levels: high and low level heuristics. In this paper, the high level heuristics are composed by a selection mechanism and an acceptance criterion. The low level heuristics consists in a set of heuristics, selected from previous works, a memory mechanism and a fitness function. 
+As mentioned before a hyper-heuristic framework is divided in two levels: high and low level heuristics. In this paper, the high level heuristics are composed by a selection mechanism and an acceptance criterion. 
 
 Two terminal sets (one for the selection mechanisms and another for the acceptance criteria) were defined accordingly with the information that can be calculated within the history of the low level heuristics applications. 
 
@@ -891,10 +891,12 @@ To stop the GE process a maximum number of evaluations was setup to 60000. This 
   
   \subsection{Low Level Heuristics} 
   
-  The low level heuristics in this paper are composed by two main components: a set of low level heuristics, that were selected from previous studies using the PSP, a backtrack repair mechanism and a memory mechanism.
+  \subsubsection{Representation of the problem} 
+  There is different types of represent the protein structures within the HP-2d model. According to Krasnogor et al. \cite{krasnogor1999protein}  the relative representation have a better potential to achieve superior results. The relative representation stats that: the movements in the grid for each amino-acid are represented always based on the previous, that is why it is named relative. There are 3 possible movements within the HP-2d model: forward (F), left (L) and right (R). Hence, the following integer codification was used $F\rightarrow0$, $E\rightarrow1$ and $D\rightarrow2$. Thereby, the allowed alphabet can be represented as $\{0,1,2\}$.  
 
   \subsubsection{Low Level Heuristics Set}
- 
+% todo: put the other works
+ The low level heuristics set of was selected from previous studies \cite{benitez2015algoritmo,custodio2014multiple, custodio2004investigation} that explore the PSP.
  
   \begin{itemize}
   	\item \textit{Two Points Crossover} (2X): This operator selects, randomly, two crossing points splitting the individuals in 3 pieces. The genes between the selected positions are exchanged between the parents in order to generate the offspring. \cite{benitez2015algoritmo}.
@@ -914,6 +916,16 @@ To stop the GE process a maximum number of evaluations was setup to 60000. This 
 	\item \textit{Opposite Mutation} (OM): This heuristic exchanges directions, for the opposite, within a sequence of genes between two genes $(i,j)$ randomly selected. The direction 0 ($F$) does not have a opposite, therefore it is maintained. 
 	
  \end{itemize} 	 
+ 
+ \subsubsection{Backtrack Repair}
+ Since the low level heuristics have a great probability of generating solutions with collisions \cite{benitez2015algoritmo}. Whenever it is possible, to repair a solution using a backtrack strategy the solution is maintained otherwise it is penalized. 
+ 
+ 
+
+\subsubsection{Memory Mechanism}
+Sabar et al. \cite{sabar2015automatic} suggested that the use of a memory of solutions to the problem would be more effective than relying on a single solution and may restrict the ability of dealing with large and heavily constrained search spaces, as it is widely known that single
+solution based methods are not well suited to cope with
+large search spaces and heavily constrained problems \cite{blum2011hybrid}
 
 
 %TODO: check  the necessity of this subsection
