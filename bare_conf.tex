@@ -443,7 +443,7 @@ Many heuristics strategies were developed to find conformations of minimum energ
 
  Burke et al. \cite{burke2010classification} recently defined hyper-heuristics as "an automated methodology for selecting or generating heuristics to solve hard computational search problems". Over the years, these methodologies have demonstrated success in solving a wide range of real world problems.  However, there are a lack of works that use this approach to solve the PSP problem.
 
-The paper describes the automated generation of hyper-heuristics to solve the PSP problem. The hyper-heuristic includes two main components:  a selection mechanisms and acceptance criteria.  Both components are generated using grammatical evolution(GE), which is a kind of genetic programming (PG). A set of experiment is made to evaluate the approach using eleven PSP instances. The results are compared with the results of the literature.  
+The paper describes the automated generation of hyper-heuristics to solve the PSP problem. The hyper-heuristic includes two main components:  a selection mechanisms and acceptance criteria.  Both components are generated using grammatical evolution (GE), which is a kind of genetic programming (GP). A set of experiment was designed to evaluate the approach using eleven PSP instances. The results are compared with the previous works of the literature.  
 
 
 
@@ -581,15 +581,16 @@ A novel work presented by Sabar et al. \cite{sabar2015automatic}, uses GEP (gene
 
 
 
-\subsection{Genetic Programming}
-
-Genetic Programming (GP) \cite{burke2009exploring} is a sub-field from the program synthesis which uses ideas from the evolution theory to produce programs.
+\subsection{Genetic Programming {GP}}
+ Is a sub-field from the program synthesis which uses ideas from the evolution theory to produce programs \cite{burke2013hyper}. 
 
 % The main factors from the evolutionary computation are inheritance, reproduction/mutation and selection of the fittest. Initially, a random-generated population of programs is created. Using a selection method to select good individuals for reproduction. Then the reproduction and mutation steps takes place in order to generate an offspring. Finally, the offspring is evaluated to assign a fitness value and based on this value the offspring can either enter or not in the population. 
 
 %Traditionally, in genetic programming, the programs that compose the population are represented using a tree structure. However, other structures that can be evolved exists, for instance: linear sequences of instructions and grammar expressions. 
 
-Grammatical Evolution (GE) is a relatively new technique from the evolutionary computing, introduced by Ryan el al. \cite{ryan1998grammatical} and it is a type of GP which utilizes a grammar to generate programs. Just like in GP the main goal is to find a executable program or piece of code, which have a good fitness value. Ryan el al. \cite{ryan1998grammatical} proposes a technique to generate programs or fragments for any language using BNF (Backus Naur Form) definitions. This technique can be used to evolve programs though a evolution process. The GE uses a mapping mechanism between the genotype (coded individuals by integer vectors) and phenotype (generated programs to resolve a problem). The BNF notation is used to represent a grammar from a language in form of production rules. A BNF grammar consists in a set of terminals, which are items that are allowed to the language, for instance: +, -, *, / etc and non-terminals, which can be expanded into one or more terminals. The grammar can be expressed as a tuple ${N,T,P,S}$, where $N$ is a set of non-terminals, $T$ a set of terminals, $P$ a set of production rules that maps the elements $N$ to $T$; finally, $S$, a symbol to represent the initial point contained in $N$.
+\subsubsection{Grammatical Evolution (GE)} 
+
+Is a relatively new technique from the evolutionary computing, introduced by Ryan el al. \cite{ryan1998grammatical} and it is a type of GP which utilizes a grammar to generate programs. Just like in GP the main goal is to find a executable program or piece of code, which have a good fitness value. Ryan el al. \cite{ryan1998grammatical} proposes a technique to generate programs or fragments for any language using BNF (Backus Naur Form) definitions. This technique can be used to evolve programs though a evolution process. The GE uses a mapping mechanism between the genotype (coded individuals by integer vectors) and phenotype (generated programs to resolve a problem). The BNF notation is used to represent a grammar from a language in form of production rules. A BNF grammar consists in a set of terminals, which are items that are allowed to the language, for instance: +, -, *, / etc and non-terminals, which can be expanded into one or more terminals. The grammar can be expressed as a tuple ${N,T,P,S}$, where $N$ is a set of non-terminals, $T$ a set of terminals, $P$ a set of production rules that maps the elements $N$ to $T$; finally, $S$, a symbol to represent the initial point contained in $N$.
  
 \begin{center}
 	
@@ -756,13 +757,14 @@ In this section will be presented the methodology defined for the grammatical ev
 %TODO: Sende that the low level heuristics piece
 %This representation was used to represent the chromosome within the PSP and the HP-2d model and will be explained next: the movements in the grid for each amino-acid are represented always based on the previous, that is why the representation is named relative. There are 3 possible movements within the HP-2d model: forward (F), left (L) and right (R). Hence, the following integer codification was used $F\rightarrow0$, $E\rightarrow1$ and $D\rightarrow2$. Thereby, the allowed alphabet can be represented as $\{0,1,2\}$.
 
-As mentioned before a hyper-heuristic framework is divided in two levels: high and low level heuristics. In this paper, the high level heuristics are composed by a selection mechanism and an acceptance criterion. 
 
-Two terminal sets (one for the selection mechanisms and another for the acceptance criteria) were defined accordingly with the information that can be calculated within the history of the low level heuristics applications. 
+%In this paper, the high level heuristics are composed by a selection mechanism and an acceptance criterion. 
+
+Two terminal sets (one for the selection mechanisms and another for the acceptance criteria) were defined accordingly with the information that can be extracted during the search progress. The selection terminals are presented next:
 
 %TODO: Check if this phrase would make sense
 %The terminal sets were inspired by work \cite{sabar2015automatic}. 
-The selection terminals is presented next:
+
 
 \begin{itemize}
 	\item RC (\textit{Reward Credit}): The reward that a given heuristic should receive based on its performance. The improvement is calculated, for the $i_{th}$ heuristic, using $M(i) = (|f1 -f2|/f1)*100$ if $f2< f1$, where $f1$ is the current fitness and $f2$ is the fitness of the generated solution by the $i_{th}$ heuristic.
@@ -896,7 +898,7 @@ To stop the GE process a maximum number of evaluations was setup to 60000. This 
 
   \subsubsection{Low Level Heuristics Set}
 % todo: put the other works
- The low level heuristics set of was selected from previous studies \cite{benitez2015algoritmo,custodio2014multiple, custodio2004investigation} that explore the PSP.
+ The low level heuristics set of was selected from previous studies \cite{benitez2015algoritmo,custodio2014multiple, custodio2004investigation, garza2012multiobjectivizing} that explore the PSP.
  
   \begin{itemize}
   	\item \textit{Two Points Crossover} (2X): This operator selects, randomly, two crossing points splitting the individuals in 3 pieces. The genes between the selected positions are exchanged between the parents in order to generate the offspring. \cite{benitez2015algoritmo}.
@@ -908,7 +910,7 @@ To stop the GE process a maximum number of evaluations was setup to 60000. This 
 
 	\item \textit {Exhaustive Search Mutation} (EMUT): This heuristic selects a random gene and changes to all possible directions and it will keep the change that achieve improvement. This operator has a trade-off because it demands four fitness evaluations instead of just one. However, this heuristic has great potential of improving the input solution.
 	
-	\item \textit{Local Move Operator} (LM): This heuristic exchanges directions between two consecutive random selected genes. There are some conditions in order to execute this heuristic, for instance, the new directions can not create redundant movements. This heuristic introduces a "corner" movement.
+	\item \textit{Local Move Operator} (LM): This heuristic exchanges directions between two consecutive random selected genes. There are some conditions in order to execute this heuristic, for instance, the new directions can not create redundant movements. 
 	
 	\item \textit{Loop Move Operator} (LPM): Similar with LM, this heuristic exchanges directions between two genes that are five genes of distance between each other, creating a loop movement.
 	
