@@ -442,20 +442,19 @@ Email: roberto.santana@ehu.es
 %Conferences and journals have algorithms that compute the amount of self-plagiarism of a paper by searching on internet for this type of patters.
 %
 %So, my advice, go paragraph by paragraph in the introduction and don´t be afraid to leave your personal mark by modifying the way things are said. I will later review the paper and if you introduce mistakes we will correct them. 
-Proteins plays a fundamental role in nature, they are involved in many important functions for  the living cells. Proteins are structures, composed by amino-acids that guarantee the correct operation of wide range of biological entities. These structures are the result of the so-called protein folding process, in which an unfolded chain of amino-acids will be transformed into its final/native structure.
+Proteins execute an essential role in nature, they are responsible of many important functions of the living cells. Proteins can be seen as amino-acids structures  that guarantee the correct operation of many areas from the biological entities. These structures are product of the so-called protein folding process where an unfolded chain of amino-acids is transformed into its final/native structure.
+.
 
-The protein structure prediction (PSP) has a wide range of biotechnology and medical applications. For instance: synthesis of new proteins and folds \cite{wang2012structural}, structure based synthesis of new drugs \cite{davis2009rosettaligand}, refinement of theoretical models obtained by comparative modeling \cite{qian2004improvement, krieger2009improving}, and
-obtaining experimental structures from incomplete nuclear magnetic
-resonance data  \cite{shen2009novo}.  
+The protein structure prediction (PSP) has a broad range of  medical and biotechnology applications. For instance: synthesis of new proteins and folds \cite{wang2012structural}, structure based synthesis of new drugs \cite{davis2009rosettaligand}, refinement of theoretical models obtained by comparative modeling \cite{qian2004improvement, krieger2009improving}, and
+obtaining experimental structures from incomplete nuclear magnetic resonance data  \cite{shen2009novo}.  
 
-The determination of the native structure of a protein is a hard task even for the modern super computers. The difficulty is due to the huge search space to test all possible configurations that a given protein can adopt. Many models to represent the proteins structures have been proposed and can be used to simulate the folding process. Although there exist extremely detailed models, these representations are computational very expensive. Hence, many authors \cite{custodio2004investigation,hsu2003growth,lin2011protein,unger1993genetic,santana2008component,custodio2014multiple, garza2012locality} have used simplified models to represent the protein structures. A useful model for this purpose is the Hydrophobic-Polar (HP) model presented by Lau and Dill \cite{lau1989lattice}. This model reduces the amino-acids that composes the proteins into just two types hydrophobic (H) or polar (P). Two-dimensional (2D) or three-dimensional (3D) grids can be used to represent the conformations that a protein can adopt. Each conformation has an associated energy \cite{unger1993genetic}. 
+The task of determining the native structures of proteins is challenging even for the modern super computers. The difficulty raises up due to the huge search space to test all possible conformation that a sequence of amino-acids can adopt. There are many models to represent proteins structures and can be used to simulate the folding process. Extremely detailed models exist however these representation are computational very expensive. Hence, many authors \cite{custodio2004investigation,hsu2003growth,lin2011protein,unger1993genetic,santana2008component,custodio2014multiple, garza2012locality} have used simplified models to represent the protein structures. A very common model for this purpose is the Hydrophobic-Polar (HP) model presented by Lau and Dill \cite{lau1989lattice}. This model abstract the amino-acids into just two types hydrophobic (H) or polar (P). Two-dimensional (2D) or three-dimensional (3D) grids can be used to represent the conformations that a protein can adopt. Each conformation has an associated energy \cite{unger1993genetic}. 
 
 % Para isto, é necessário considerar as interações entre os aminoácidos. Uma interação ocorre quando o par de aminoácidos é adjacente no \textit{grid}/cubo e não é adjacente na sequência. No modelo HP existem apenas três: (HP, HH e PP), mas somente interações hidrofóbicas (HH) influenciam no valor de energia referente a uma conformação \cite{unger1993genetic}. A questão que surge é como buscar, dentre as possíveis conformações, aquela cuja a energia seja mínima.
 
-Many heuristics strategies were developed to find conformations of minimum energy of the HP model. Among the approaches that have been applied are genetic algorithms \cite{unger1993genetic}, ant colony optimization \cite{shmygelska2002ant, shmygelska2003improved}, estimation distribution algorithms \cite{santana2008component }, and others [9].
-
-
- Although there are different strategies already proposed for the PSP, all of them face difficulties to reach the optimal configurations when the length of amino-acids sequences increases. This fact motivates the study here presented. In this kind of context that hyper-heuristics are usually a good option in order to better explore a complex search space. In general the hyper-heuristics frameworks propose a strategy to select, from a pool, the heuristic which is more appropriate for a given moment. Combining the strengths and weakness of a set of heuristics. Also the hyper-heuristics frameworks define a move acceptance criterion, which is responsible to decide on whether accept or reject when worst solutions are generated by the heuristics. Theses strategies are high level heuristics from a hyper-heuristic framework. 
+A wide range of heuristics strategies were proposed to search  conformations of minimum energy in the HP model. Among the approaches that have been applied are genetic algorithms \cite{unger1993genetic}, ant colony optimization \cite{shmygelska2002ant, shmygelska2003improved}, estimation distribution algorithms \cite{santana2008component}, and others [9]. Even though there are different strategies already proposed for the PSP, all face difficulties to reach the optimal conformations when the length of amino-acids sequences increases.
+  
+   This fact motivates the study here presented. In this kind of context that hyper-heuristics are usually a good option in order to better explore a complex search space. In general the hyper-heuristics frameworks propose a strategy to select, from a pool, the heuristic which is more appropriate for a given moment. Combining the strengths and weakness of a set of heuristics. Also the hyper-heuristics frameworks define a move acceptance criterion, which is responsible to decide on whether accept or reject when worst solutions are generated by the heuristics. Theses strategies are high level heuristics from a hyper-heuristic framework. 
  
  Usually the high level heuristics are human-designed approaches although a study \cite{sabar2015automatic} propose the automate design of those components. This study presented promising results and also inspired the idea of automating the design of high level heuristics to a hyper-heuristic framework to the PSP problem. Since the PSP with the HP-2D model presents a very complex landscape automating the design of hyper-heuristic framework could save time, money and human effort when design a hyper-heuristic strategy to the PSP. Another motivation of the present study is that the hyper-heuristics frameworks have been applied to other domains problems and achieving good results in the bin packing, personnel scheduling, flowshop, TSP, MAXSAT and VRP problems \cite{sabar2015automatic}.
  
@@ -477,7 +476,7 @@ This paper is organized as follows: in the next section we briefly introduce the
 \section{Protein Structure Prediction} \label{sec:proteinfolding}
 
 
-Proteins are macromolecules composed by an alphabet of twenty different amino acids, also referred to as residues. An amino acid is formed by a peptide backbone and a distinctive side chain group. The peptide bond is defined by an amino group and a carboxyl group connected to an alpha carbon to which a hydrogen and side chain group are attached.
+Proteins are macromolecules composed by an alphabet of twenty different amino-acids, also referred to as residues. An amino-acid is formed by a peptide backbone and a distinctive side chain group. The peptide bond is defined by an amino group and a carboxyl group connected to an alpha carbon to which a hydrogen and side chain group are attached.
 
 
 %Sequences are formed by combining amino acids and are considered the primary structure of
@@ -503,14 +502,14 @@ The HP model considers two types of residues:  hydrophobic (H) residues  and hyd
 \begin{figure}[htb!] \label{fig:PROTEXAM}
 	\centering
 	\includegraphics[scale=0.7]{figures/proteinExample.png}
-	\caption{One possible configuration of  sequence $PPPPHPHHHHPH$ in the HP model. There is two $HH$ (represented by a dotted line with wide spaces), one $HP$ (represented by a dashed line) and  two $PP$  (represented by dotted lines) contacts.}
+	\caption{One possible configuration of  sequence $PPPPHPHHHHPH$ in the HP model. The white circles represents the P amino-acids and the black circles describes the H amino-acids. There is two $H-H$ (represented by a dotted line with wide spaces), one $H-P$ (represented by a dashed line) and  two $P-P$  (represented by dotted lines) contacts.}
 \end{figure}
 
 
 %The total number of topological neighboring positions in the lattice ($z$) is called the lattice coordination number.
 
 
-For the HP model, an energy function that  measures the interaction between topological  neighbor residues is defined  as  $\epsilon_{HH}=-1$ and $\epsilon_{HP}=\epsilon_{PP}=0$. The HP problem consists of finding the solution that minimizes the total energy. In the linear representation of the sequence, hydrophobic residues are represented with the letter H and polar ones, with P. In the graphical representation, hydrophobic proteins are represented  by black beads and polar proteins, by white beads.  Figure 1 shows the graphical representation of a possible configuration for  the sequence  $PPPPHPHHHHPH$ in a 2D space. The energy that the HP model associates with this configuration is $-2$.
+For the HP model, an energy function that  measures the interaction between topological  neighbor residues is defined  as  $\epsilon_{HH}=-1$ and $\epsilon_{HP}=\epsilon_{PP}=0$. The HP problem consists of finding the solution that minimizes the total energy. In the linear representation of the sequence, hydrophobic residues are represented with the letter H and polar ones, with P. In the graphical representation, hydrophobic proteins are represented  by black beads and polar proteins, by white beads.  Figure 1 shows the graphical representation of a possible configuration for  the sequence  $PPPPHPHHHHPH$ in a 2D space. The energy that the HP model associates with this configuration is $-2$. In the HP context the amino-acid sequences are used as instances to the problem.
 
 
 Among many works that explores the PSP problem, here are some examples of the approaches that have been used to solve it.
@@ -677,7 +676,7 @@ Grammatical Evolution (GE) is a relatively new technique from the evolutionary c
 \end{table}
 
 
-Ryan et al. \cite{ryan1998grammatical}  proposed the use of genetic algorithm (GA) to control which choices should be made, in this sense allowing the GA to select which production rules should be utilized. An individual (chromosome) consists in variable-length integer vector and it is called genotype. Algorithm \ref{alg:GE} presents the pseudocode of a grammatical evolution program. Lines 3 to 6 represents the initialization of the algorithm: a randomly generated population is created and then mapped to programs using the GF (Grammar File). Those programs are evaluated and a fitness value is assigned for each individual in the population. Line 7 represents the main loop of the algorithm and the evolution process occurs within this loop. Line 8,9,10,11 and 12 occurs: the parent selection; the crossover between the parents, the application of the prune and duplication operators and finally, the mutation operator is applied. Line 13 represents the mapping between the offspring (integer vectors) to programs using the GF. Line 14 and 15 represents the fitness assignment to the individuals from the population. Line 16 represents the population replacement with the fittest individuals. Finally, line 18 return the program with the best fitness found.
+Ryan et al. \cite{ryan1998grammatical}  proposed the use of genetic algorithm (GA) to control which choices should be made, in this sense allowing the GA to select which production rules should be utilized. An individual (chromosome) consists in variable-length integer vector and it is called genotype. Algorithm \ref{alg:GE} presents the pseudocode of a grammatical evolution program. Lines 3 to 6 represents the initialization of the algorithm: a randomly generated population is created and then mapped to programs using the GF (Grammar File). Those programs are evaluated and a fitness value is assigned for each individual in the population. Line 7 represents the main loop of the algorithm and the evolution process occurs within this loop. Lines 8,9,10,11 and 12 represents: the parent selection; the crossover between the parents, the application of the prune and duplication operators and finally, the mutation operator is applied. Line 13 represents the mapping between the offspring (integer vectors) to programs using the GF. Line 14 and 15 represents the fitness assignment to the individuals from the population. Line 16 represents the population replacement with the fittest individuals. Finally, line 18 return the program with the best fitness found.
 
 
 \begin{algorithm}[htb]
@@ -945,29 +944,28 @@ To stop the GE process a maximum number of evaluations was setup to 60000. This 
   	
   	\item  \textit{Multiple Points Crossover} (MPX): Similar with 2X although with $c$ points of crossing. We use $c=int(n*0.1)$, ..., where $n$ is the sequence length. The MPX is useful to promote a wide structural diversity \cite{sabar2015automatic}.
   	
-	\item \textit{Segment Mutation} (SMUT): It changes a random number (5 to 7) of consecutive genes to distinct values. This heuristic introduces large changes in the protein conformation, and it has a great probability of creating collisions.  
+	\item \textit{Segment Mutation} (SMUT): It changes a random number (5 to 7) of consecutive genes to distinct values. This heuristic introduces large changes in the protein conformation, and it has a great probability of creating collisions (cases in which the protein conformation are not self avoiding).  
 
-	\item \textit {Exhaustive Search Mutation} (EMUT): This heuristic selects a random gene and changes to all possible directions and it will keep the change that achieves the best improvement. This operator has a trade-off because it demands four fitness evaluations instead of just one. However, this heuristic has great potential of improving the input solution.
+	\item \textit {Exhaustive Search Mutation} (EMUT): 	This heuristic selects a random gene and modifies it to other possible value. All possible values are tried and the one whom achieved the higher improvement will be kept. This operator demands four fitness evaluations instead of just one. However, this heuristic has great potential of improving the input solution.
 	
-	\item \textit{Local Move Operator} (LM): This heuristic exchanges directions between two consecutive random selected genes. There are some conditions in order to execute this heuristic, for instance, the new directions can not create redundant movements. 
+	\item \textit{Local Move Operator} (LM): This heuristic exchanges directions between two consecutive random selected genes. This heuristic introduces small local changes that can reduce the distance between pairs of H-H.
 	
 	\item \textit{Loop Move Operator} (LPM): Similar with LM, this heuristic exchanges directions between two genes that are five genes of distance between each other.
 	
 	
-	\item \textit{Opposite Mutation} (OM): This heuristic exchanges directions, for the opposite, within a sequence of genes between two genes $(i,j)$ randomly selected. 
-%	The direction 0 ($F$) does not have a opposite, therefore it is maintained. 
-%	
+	\item \textit{Opposite Mutation} (OM): This heuristic exchanges multiple between two genes $(i,j)$ 	 to the respective opposite. In the HP-2d this means that genes that code L are changed to R or vice and versa. The F has no opposite so, the operator is not applied. 
+
  \end{itemize} 	 
  
  \subsubsection{Backtrack Repair}
- Since the low level heuristics have a great probability of generating solutions with collisions \cite{benitez2015algoritmo}. Whenever it is possible, to repair a solution using a backtrack strategy the solution is maintained otherwise it is penalized. 
- 
+
+The low level heuristics have a great potential of creating solutions with collisions \cite{benitez2015algoritmo}. Those solutions are submitted to repair attempt using a backtrack strategy. The solutions that can be repaired are kept and the others are penalized. 
  
 
+
 \subsubsection{Memory Mechanism}
-Sabar et al. \cite{sabar2015automatic} suggested that the use of a memory of solutions to the problem would be more effective than relying on a single solution and may restrict the ability of dealing with large and heavily constrained search spaces, as it is widely known that single
-solution based methods are not well suited to cope with
-large search spaces and heavily constrained problems \cite{blum2011hybrid}.
+Sabar et al. \cite{sabar2015automatic} suggested that the use of a memory of solutions to the PSP would be more effective than relying on a single solution and may restrict the ability of dealing with large and heavily constrained search spaces. Also, Blum et al. \cite{blum2011hybrid} mention that single solution based methods are widely known to not cope with large search spaces and heavily constrained problems.
+
 
 
 \section{Experiments}
@@ -992,9 +990,7 @@ The third group of experiments GEHyPSP-3 was designed to  generate both selectio
 %Table \ref{tab:geExps} summarizes the average, standard deviations, max and min fitness values from 30 executions from the tree experiments.
 
 
-For each group of experiments eleven instances (amino-acid sequences from the HP model) selected from the previous studies with the PSP problem \cite{custodio2004investigation,hsu2003growth,lin2011protein,unger1993genetic,santana2008component,custodio2014multiple, garza2012locality}. The sizes (number of residues) of the HP instances
-
- used in the experiments are presented in table \ref{tab:instances}. 
+For each group of experiments eleven instances (amino-acid sequences from the HP model) selected from the previous studies with the PSP problem \cite{custodio2004investigation,h,lin2011protein,santana2008component,custodio2014multiple}. The sizes (number of residues) of the HP instances used in the experiments are presented in table \ref{tab:instances}. 
  For the sake of space, the sequences are not reproduced here. They can be obtained from \cite{santana2008component}. Also, for each group of experiments the training phase consisted on executing the GE process with three ramdonly selected instances from the eleven available instances. In the validation phase the best generated selection mechanisms and acceptance criteria were executed together against all eleven instances. 
 
 \begin{table}[]
