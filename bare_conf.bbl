@@ -1,0 +1,178 @@
+\begin{thebibliography}{10}
+
+\bibitem{benitez2015algoritmo}
+C{\'e}sar Manuel~Vargas Ben{\'\i}tez.
+\newblock Um algoritmo gen{\'e}tico paralelo para o problema de dobramento de
+  prote{\'\i}nas utilizando o modelo 3dhp com cadeia lateral.
+\newblock 2010.
+
+\bibitem{blum2011hybrid}
+Christian Blum, Jakob Puchinger, G{\"u}nther~R Raidl, and Andrea Roli.
+\newblock Hybrid metaheuristics in combinatorial optimization: A survey.
+\newblock {\em Applied Soft Computing}, 11(6):4135--4151, 2011.
+
+\bibitem{burke2013hyper}
+Edmund~K Burke, Michel Gendreau, Matthew Hyde, Graham Kendall, Gabriela Ochoa,
+  Ender {\"O}zcan, and Rong Qu.
+\newblock Hyper-heuristics: A survey of the state of the art.
+\newblock {\em Journal of the Operational Research Society}, 64(12):1695--1724,
+  2013.
+
+\bibitem{burke2009exploring}
+Edmund~K Burke, Mathew~R Hyde, Graham Kendall, Gabriela Ochoa, Ender Ozcan, and
+  John~R Woodward.
+\newblock Exploring hyper-heuristic methodologies with genetic programming.
+\newblock In {\em Computational intelligence}, pages 177--201. Springer, 2009.
+
+\bibitem{burke2010classification}
+Edmund~K Burke, Matthew Hyde, Graham Kendall, Gabriela Ochoa, Ender {\"O}zcan,
+  and John~R Woodward.
+\newblock A classification of hyper-heuristic approaches.
+\newblock In {\em Handbook of metaheuristics}, pages 449--468. Springer, 2010.
+
+\bibitem{custodio2004investigation}
+F{\'a}bio~L Cust{\'o}dio, H{\'e}lio~JC Barbosa, and Laurent~E Dardenne.
+\newblock Investigation of the three-dimensional lattice {HP} protein folding
+  model using a genetic algorithm.
+\newblock {\em Genetics and Molecular Biology}, 27(4):611--615, 2004.
+
+\bibitem{custodio2014multiple}
+F{\'a}bio~Lima Cust{\'o}dio, Helio~JC Barbosa, and Laurent~Emmanuel Dardenne.
+\newblock A multiple minima genetic algorithm for protein structure prediction.
+\newblock {\em Applied Soft Computing}, 15:88--99, 2014.
+
+\bibitem{davis2009rosettaligand}
+Ian~W Davis and David Baker.
+\newblock Rosettaligand docking with full ligand and receptor flexibility.
+\newblock {\em Journal of molecular biology}, 385(2):381--392, 2009.
+
+\bibitem{ferreira2008gene}
+Candida Ferreira and U~Gepsoft.
+\newblock What is gene expression programming, 2008.
+
+\bibitem{garza2012multiobjectivizing}
+Mario Garza-Fabre, Eduardo Rodriguez-Tello, and Gregorio Toscano-Pulido.
+\newblock Multiobjectivizing the hp model for protein structure prediction.
+\newblock In {\em European Conference on Evolutionary Computation in
+  Combinatorial Optimization}, pages 182--193. Springer, 2012.
+
+\bibitem{garza2012locality}
+Mario Garza-Fabre, Gregorio Toscano-Pulido, and Eduardo Rodriguez-Tello.
+\newblock Locality-based multiobjectivization for the hp model of protein
+  structure prediction.
+\newblock In {\em Proceedings of the 14th annual conference on Genetic and
+  evolutionary computation}, pages 473--480. ACM, 2012.
+
+\bibitem{hsu2003growth}
+Hsiao-Ping Hsu, Vishal Mehra, Walter Nadler, and Peter Grassberger.
+\newblock Growth algorithms for lattice heteropolymers at low temperatures.
+\newblock {\em The Journal of chemical physics}, 118(1):444--451, 2003.
+
+\bibitem{koza1992genetic}
+John~R Koza.
+\newblock {\em Genetic programming: on the programming of computers by means of
+  natural selection}, volume~1.
+\newblock MIT press, 1992.
+
+\bibitem{krasnogor2002multimeme}
+Natalio Krasnogor, BP~Blackburne, Edmund~K Burke, and Jonathan~D Hirst.
+\newblock Multimeme algorithms for protein structure prediction.
+\newblock In {\em Parallel Problem Solving from Nature—PPSN VII}, pages
+  769--778. Springer, 2002.
+
+\bibitem{krasnogor1999protein}
+Natalio Krasnogor, W~Hart, Jim Smith, and D~Pelta.
+\newblock Protein structure prediction with evolutionary algorithms.
+\newblock 1999.
+
+\bibitem{krieger2009improving}
+Elmar Krieger, Keehyoung Joo, Jinwoo Lee, Jooyoung Lee, Srivatsan Raman, James
+  Thompson, Mike Tyka, David Baker, and Kevin Karplus.
+\newblock Improving physical realism, stereochemistry, and side-chain accuracy
+  in homology modeling: four approaches that performed well in casp8.
+\newblock {\em Proteins: Structure, Function, and Bioinformatics},
+  77(S9):114--122, 2009.
+
+\bibitem{lau1989lattice}
+Kit~Fun Lau and Ken~A Dill.
+\newblock A lattice statistical mechanics model of the conformational and
+  sequence spaces of proteins.
+\newblock {\em Macromolecules}, 22(10):3986--3997, 1989.
+
+\bibitem{lin2011protein}
+Cheng-Jian Lin and Shih-Chieh Su.
+\newblock Protein 3 d hp model folding simulation using a hybrid of genetic
+  algorithm and particle swarm optimization.
+\newblock {\em International Journal of Fuzzy Systems}, 13(2):140--147, 2011.
+
+\bibitem{misir2012intelligent}
+Mustafa Misir.
+\newblock Intelligent hyper-heuristics: a tool for solving generic optimisation
+  problems.
+\newblock 2012.
+
+\bibitem{ochoa2012hyflex}
+Gabriela Ochoa, Matthew Hyde, Tim Curtois, Jose~A Vazquez-Rodriguez, James
+  Walker, Michel Gendreau, Graham Kendall, Barry McCollum, Andrew~J Parkes,
+  Sanja Petrovic, et~al.
+\newblock Hyflex: A benchmark framework for cross-domain heuristic search.
+\newblock In {\em Evolutionary computation in combinatorial optimization},
+  pages 136--147. Springer, 2012.
+
+\bibitem{qian2004improvement}
+Bin Qian, Angel~R Ortiz, and David Baker.
+\newblock Improvement of comparative model accuracy by free-energy optimization
+  along principal components of natural structural variation.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 101(43):15346--15351, 2004.
+
+\bibitem{ryan1998grammatical}
+Conor Ryan, JJ~Collins, and Michael~O Neill.
+\newblock Grammatical evolution: Evolving programs for an arbitrary language.
+\newblock In {\em Genetic Programming}, pages 83--96. Springer, 1998.
+
+\bibitem{sabar2015automatic}
+Nasser~R Sabar, Masri Ayob, Graham Kendall, and Rong Qu.
+\newblock Automatic design of a hyper-heuristic framework with gene expression
+  programming for combinatorial optimization problems.
+\newblock {\em IEEE Transactions on Evolutionary Computation}, 19(3):309--325,
+  2015.
+
+\bibitem{santana2008component}
+Roberto Santana, Pedro Larra{\~n}aga, and Jose~A Lozano.
+\newblock Component weighting functions for adaptive search with edas.
+\newblock In {\em 2008 IEEE Congress on Evolutionary Computation (IEEE World
+  Congress on Computational Intelligence)}, pages 4066--4073. IEEE, 2008.
+
+\bibitem{shen2009novo}
+Yang Shen, Robert Vernon, David Baker, and Ad~Bax.
+\newblock De novo protein structure generation from incomplete chemical shift
+  assignments.
+\newblock {\em Journal of biomolecular NMR}, 43(2):63--78, 2009.
+
+\bibitem{shmygelska2002ant}
+Alena Shmygelska, Rosalia Aguirre-Hernandez, and Holger~H Hoos.
+\newblock An ant colony optimization algorithm for the 2d hp protein folding
+  problem.
+\newblock In {\em Ant Algorithms}, pages 40--52. Springer, 2002.
+
+\bibitem{shmygelska2003improved}
+Alena Shmygelska and Holger~H Hoos.
+\newblock An improved ant colony optimisation algorithm for the 2d hp protein
+  folding problem.
+\newblock In {\em Advances in Artificial Intelligence}, pages 400--417.
+  Springer, 2003.
+
+\bibitem{unger1993genetic}
+Ron Unger and John Moult.
+\newblock Genetic algorithms for protein folding simulations.
+\newblock {\em Journal of molecular biology}, 231(1):75--81, 1993.
+
+\bibitem{wang2012structural}
+Ling Wang, Eric~A Althoff, Jill Bolduc, Lin Jiang, James Moody, Jonathan~K
+  Lassila, Lars Giger, Donald Hilvert, Barry Stoddard, and David Baker.
+\newblock Structural analyses of covalent enzyme--substrate analog complexes
+  reveal strengths and limitations of de novo enzyme design.
+\newblock {\em Journal of molecular biology}, 415(3):615--625, 2012.
+
+\end{thebibliography}
