@@ -406,7 +406,10 @@ Email: roberto.santana@ehu.es
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-	The Protein Structure Prediction (PSP) problem is one the modern most challenging problems from science. Simplified protein models are usually applied to simulate and study some characteristics of the protein folding process. Hence, many heuristic strategies have been applied in order to find simplified protein structures in which the protein configuration have the minimal energy. However, these strategies have difficulties on finding the optimal solutions to the longer sequences of amino-acids, due to the complexity of the problem and the huge amount of local optima. The Hyperheuristics have proved to be useful in this kind of context since they try to combine different heuristics strengths into a single framework. However, there is lack of works addressing the automated design of hyper-heuristics components. This paper proposes GEHyPSP, an approach which aims to the generation, through grammatical evolution, of selection mechanisms and acceptance criteria for a hyper-heuristic framework applied to PSP problem. We investigate the strengths and weaknesses of our approach on a benchmark of simplified protein models. The results achieved in 7 instances from a total of 11 the GEHyPSP was able to reach the best known results.
+	The Protein Structure Prediction (PSP) problem is one the modern most challenging problems from science. Simplified protein models are usually applied to simulate and study some characteristics of the protein folding process. Hence, many heuristic strategies have been applied in order to find simplified protein structures in which the protein configuration have the minimal energy. However, these strategies have difficulties on finding the optimal solutions to the longer sequences of amino-acids, due to the complexity of the problem and the huge amount of local optima. The Hyperheuristics have proved to be useful in this kind of context since they try to combine different heuristics strengths into a single framework. However, there is lack of works addressing the automated design of hyper-heuristics components. This paper proposes GEHyPSP, an approach which aims to the generation, through grammatical evolution, of selection mechanisms and acceptance criteria for a hyper-heuristic framework applied to PSP problem. We investigate the strengths and weaknesses of our approach on a benchmark of simplified protein models. GEHyPSP was able to reach the best known results in 7 instances from 11 that composed the benchmark set used to evaluate the approach.
+	
+	
+ 
 %	TODO: Should we mention in the abstract at least one line
 % related to the results achieved by this approach
 	
@@ -678,7 +681,7 @@ Grammatical Evolution (GE) is a relatively new technique from the evolutionary c
 \end{table}
 
 
-	Ryan et al. \cite{ryan1998grammatical}  proposed the use of GA to control which choices should be made, in this sense allowing the GA to select which production rules should be utilized. Algorithm \ref{alg:GE} presents the pseudocode of a grammatical evolution program. Lines 3 to 6 represent the initialization of the algorithm: a randomly generated population is created and then mapped to programs using the GF (Grammar File). Those programs are evaluated and a fitness value is assigned for each individual in the population. Line 7 indicates the start of the main loop of the algorithm and the evolution process occurs within this loop. Line 8 invokes the parent selection that will be used in the crossover in Line 9 which will generate an offspring (integer vectors). The offspring is then used as input to prune and duplication operators in Lines 10, 11. The mutation operator is applied to the offspring in Line 12. The mapping between the integer vectors to programs is accomplished in Line 13. Next the execution and fitness assignment to the individuals from the population are implemented in Line 14 and 15. The population replacement with the fittest individuals is done in Line 16. Finally, Line 18 returns the program with the best fitness found.
+	Ryan et al. \cite{ryan1998grammatical}  proposed the use of GA to control which choices should be made, in this sense allowing the GA to select which production rules should be utilized. Algorithm \ref{alg:GE} presents the pseudocode of a grammatical evolution program. Lines 3 to 6 represent the initialization of the algorithm: a randomly generated population is created and then mapped to programs using the GF (Grammar File). Those programs are evaluated and a fitness value is assigned for each individual in the population. Line 7 indicates the start of the main loop of the algorithm and the evolution process occurs within this loop. Line 8 invokes the parent selection that will be used in the crossover in Line 9 which will generate an offspring (integer vectors). The offspring is then used as input to prune and duplication operators in Lines 10 and 11. The mutation operator is applied to the offspring in Line 12. The mapping between the integer vectors to programs is accomplished in Line 13. Next the execution and fitness assignment to the individuals from the population are implemented in Line 14 and 15. The population replacement with the fittest individuals is done in Line 16. Finally, Line 18 returns the program with the best fitness found.
  
 \begin{algorithm}[htb]
 	\fontsize{8pt}{10pt}\selectfont
@@ -783,9 +786,8 @@ Next, it is necessary to decode the non-terminal expression $\langle op \rangle$
 
 \section{GEHyPSP}
 \label{sec:methodology}
-This section presents GEHyPSP: an off-line grammatical evolution application for generating THE high level heuristics of A hyper-heuristics framework for the Protein Structure Prediction problem. Our approach is based on the study by Sabar et al. \cite{sabar2015automatic}
+This section presents GEHyPSP: an off-line grammatical evolution application for generating the high level heuristics of a hyper-heuristics framework for the Protein Structure Prediction problem. Our approach is based on the study by Sabar et al. \cite{sabar2015automatic}
 
-for generating THE high level heuristics of A hyper-heuristics framework FOR the ...
 
 
 %This paper explores grammatical evolution instead of gene expression programming and also it executes, in a different domain problem, using the PSP within HP-2d model. 
@@ -947,7 +949,7 @@ To stop the GE process, a maximum number of evaluations was setup to 60000. This
   	\item \textit{Two Points Crossover} (2X): This operator selects, randomly, two crossing points splitting the individuals in 3 pieces. The genes between the selected positions are exchanged between the parents in order to generate the offspring. \cite{benitez2015algoritmo}.
   	
   	
-  	\item  \textit{Multiple Points Crossover} (MPX): Similar to 2X although with $c$ points of crossing. We use $c=int(n*0.1)$, ..., where $n$ is the sequence length. The MPX is useful to promote a wide structural diversity \cite{sabar2015automatic}.
+  	\item  \textit{Multiple Points Crossover} (MPX): Similar to 2X although with $c$ points of crossing. We use $c=int(n*0.1)$, where $n$ is the sequence length. The MPX is useful to promote a wide structural diversity \cite{sabar2015automatic}.
   	
 	\item \textit{Segment Mutation} (SMUT): It changes a random number (5 to 7) of consecutive genes to distinct values. This heuristic introduces large changes in the protein conformation, and it has a great probability of creating collisions (cases in which the protein conformation are not self avoiding).  
 
@@ -958,7 +960,7 @@ To stop the GE process, a maximum number of evaluations was setup to 60000. This
 	\item \textit{Loop Move Operator} (LPM): Similar with LM, this heuristic exchanges directions between two genes that are five genes of distance between each other.
 	
 	
-	\item \textit{Opposite Mutation} (OM): This heuristic exchanges multiple between two genes $(i,j)$ 	 to the respective opposite. In the HP-2d this means that genes that code L are changed to R or vice and versa. The F has no opposite so, the operator is not applied. 
+	\item \textit{Opposite Mutation} (OM): This heuristic exchanges multiple between two genes $(i,j)$ to the respective opposite. In the HP-2D this means that genes that code L are changed to R or vice and versa. The F has no opposite so, the operator is not applied. 
 
  \end{itemize} 	 
  
@@ -1039,7 +1041,7 @@ For each group of experiments, eleven instances (amino-acid sequences from the H
 
 \subsection{Results from GEHyPSP-1}
 
-The best individual found in the GEHyPSP-1 was the following selection mechanism:  $RC * Ccurrent * Cava - Cr$ and it was executed 30 times with a time limit of 10 minutes against the eleven instances. Table \ref{tab:gexp1best}  presents the fitness average, standard deviation, minimum and maximum of 30 executions of the best individual found in the GEHyPSP-1 experiment. The last row denoted with O(x*) is the best known value for each sequence. It is possible to note analyzing the last two rows that only for the smaller instances the generated selection mechanism achieved good results. For the sequences 8, 9, 10 and 11 the results obtained are very far from the best known solutions.
+The best individual found in the GEHyPSP-1 was the following selection mechanism:  $RC * Ccurrent * Cava - Cr$ and it was executed 30 times with a time limit of 30 minutes against the eleven instances. Table \ref{tab:gexp1best}  presents the fitness average, standard deviation, minimum and maximum of 30 executions of the best individual found in the GEHyPSP-1 experiment. The last row denoted with O(x*) is the best known value for each sequence. It is possible to note analyzing the last two rows that only for 7 sequences the selection mechanism generated achieved the best known  results. However in the case of sequences 7, 9, 10 and 11 the results obtained are very far from the best known solutions.
 
 %TODO: resultado grupo 1
 \begin{table}[]
@@ -1060,7 +1062,11 @@ The best individual found in the GEHyPSP-1 was the following selection mechanism
 
 \subsection{Results from GEHyPSP-2}
 
-The best individual found in the GEHyPSP-2 was the following acceptance criterion:  $( ( TI / Delta ) / ( ( Delta * ( ( TI / Delta ) / CI ) * Delta / Delta * TI ) - CI ) )$ and combined with the best individual from the GEHyPSP-1 the hyper-heuristic framework was executed 30 times for each one of the eleven instances with a time limit of 10 minutes. Table \ref{tab:gexp2best} presents the results for the best generated acceptance criterion in GEHyPSP-2 and also using the best selection mechanism generated in GEHyPSP-1. Again, looking to the two last rows it is possible to notice that the hyper-heuristic framework, using the best generated selection mechanisms and acceptance criterion, was not able to reach the best known results for the larger sequences. And comparing Tables \ref{tab:gexp1best} and \ref{tab:gexp2best} it is possible to visualize that there is a slight difference between the results, favoring the generated selection mechanism using the "better or equal" acceptance criterion.
+The best individual found in the GEHyPSP-2 was the following acceptance criterion:  $( ( TI / Delta ) / ( ( Delta * ( ( TI / Delta ) / CI ) * Delta / Delta * TI ) - CI ) )$ and combined with the best individual from the GEHyPSP-1 the hyper-heuristic framework was executed 30 times for each one of the eleven instances with a time limit of 30 minutes. Table \ref{tab:gexp2best} presents the results for the best generated acceptance criterion in GEHyPSP-2 and also using the best selection mechanism generated in GEHyPSP-1. Again, looking to the two last rows it is possible to notice that the hyper-heuristic framework, using the best generated selection mechanisms and acceptance criterion, was not able to reach the best known results for many cases. And comparing Tables \ref{tab:gexp1best} and \ref{tab:gexp2best} it is possible to visualize that the results obtained by the GEHyPSP-2 are very far from the ones obtained by the first GEHyPSP-1.
+
+
+
+And comparing Tables \ref{tab:gexp1best} and \ref{tab:gexp2best} it is possible to visualize that there is a slight difference between the results, favoring the generated selection mechanism using the "better or equal" acceptance criterion.
 
 \begin{table}[]
 	\centering
@@ -1085,7 +1091,7 @@ The best individual generated by the experiment GEHyPSP-3 was both a selection m
 Selection Mechanism: $( ( ( ( ( Caccept / RC ) * Cr / Caccept ) / RC * Cr ) / Caccept / RC ) * Cr ) / Caccept$ \\
 Acceptance Criterion: $( ( ( ( ( CI / PF ) * Delta / CI ) / PF * Delta ) / CI / PF ) * Delta ) / CI$
 
-Table \ref{bestGExp3} presents the results of the best individual generated by the experiment GEHyPSP-3, of 30 executions with a time limit of 10 minutes. Once again the values presented did not achieve good results when analyzing the most difficult instances. Furthermore, when comparing Table \ref{bestGExp3} with Tables \ref{tab:gexp1best} and \ref{tab:gexp2best} it is possible to see that generating both selection mechanisms and acceptance criteria produces worse results than generating them separately.
+Table \ref{bestGExp3} presents the results of the best individual generated by the experiment GEHyPSP-3, of 30 executions with a time limit of 30 minutes. Once again the values presented did not achieve good results when analyzing the most difficult instances. Furthermore, when comparing Table \ref{bestGExp3} with Tables \ref{tab:gexp1best} and \ref{tab:gexp2best} it is possible to see that generating both selection mechanisms and acceptance criteria produces worse results than generating them separately.
 
 \begin{table}[]
 	\centering
