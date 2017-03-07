@@ -501,7 +501,7 @@ The protein sequence folds, under particular conditions, into a unique native 3-
 %Using a representation close to the real would be impossible for current computers to process the information in a reasonable time.
  Lau and Dill \cite{lau1989lattice} created a model called \textit{Hydrophobic-Hydrophilic} Model (HP Model), to represent the proteins using simplifications. The model can be used either to represent proteins in a 2D space or 3D space.
 
-The HP model considers only two types of residues:  hydrophobic (H) and hydrophilic or polar (P) residues. A protein is considered a sequence of these two types of residues, which are located in regular lattice models and must form a self-avoided walk (SAW). If a structure is not a SAW it means that it contains collisions between the amino-acids and this structure is considered to be invalid. Given a pair of residues, they are considered neighbors if they are adjacent  either in the chain (connected neighbors) or  in the lattice but not connected in the chain (topological neighbors). In the HP context the amino-acid sequences are used as instances for the problem.
+The HP model considers only two types of residues:  hydrophobic (H) and hydrophilic or polar (P). A protein is considered a sequence of these two types of residues, which are located in regular lattice models and must form a self-avoided walk (SAW). If a structure is not a SAW it means that it contains collisions between the amino-acids and this structure is considered to be invalid. Given a pair of residues, they are considered neighbors if they are adjacent  either in the chain (connected neighbors) or  in the lattice but not connected in the chain (topological neighbors). In the HP context the amino-acid sequences are used as instances for the problem.
 
 
 \begin{figure}[htb!] \label{fig:PROTEXAM}
@@ -938,8 +938,8 @@ To stop the GE process, a maximum number of evaluations was setup to 60000. This
   \subsection{Low Level Heuristics} 
   
   \subsubsection{Representation of the problem} 
-  There are many ways of representing a protein conformation within the HP-2d model. According to Krasnogor et al. \cite{krasnogor1999protein}  the relative representation has a better potential to achieve superior results. The relative representation defines that each gene of the chromosome represents a direction in the grid. Each gene will encode an conformation that a protein could adopt.
-  The directions in the grid for each amino-acid are represented always based on the previous one. There are 3 possible directions within the HP-2d model: forward (F), left (L) and right (R). Hence, the following integer codification was used $F\rightarrow0$, $L\rightarrow1$ and $R\rightarrow2$. Thereby, the allowed alphabet can be represented as $\{0,1,2\}$.  
+  There are many ways of representing a protein conformation within the HP-2D model. According to Krasnogor et al. \cite{krasnogor1999protein}  the relative representation has a better potential to achieve superior results. The relative representation defines that each gene of the chromosome represents a direction in the grid. Each gene will encode an conformation that a protein could adopt.
+  The directions in the grid for each amino-acid are represented always based on the previous one. There are 3 possible directions within the HP-2D model: forward (F), left (L) and right (R). Hence, the following integer codification was used $F\rightarrow0$, $L\rightarrow1$ and $R\rightarrow2$. Thereby, the allowed alphabet can be represented as $\{0,1,2\}$.  
 
   \subsubsection{Low Level Heuristics Set}
 % todo: put the other works
@@ -987,7 +987,7 @@ The results obtained by the groups were first compared with each other. Next, th
 
 
 
-In the first group of  experiments (GEHyPSP-1), only selection mechanisms are generated. The acceptance criterion was fixed with a "better or equal" acceptance \cite{burke2009exploring}. The goal of this group is to evaluate the ability of our approach to generate selection mechanisms using a fixed acceptance criterion.   
+In the first group of  experiments (GEHyPSP-1), only selection mechanisms are generated. The acceptance criterion was fixed with a "better or equal" acceptance \cite{burke2009exploring}. The goal of this group is to evaluate the ability of our approach to generate selection mechanisms using a fixed and human-designed acceptance criterion.   
 
 %TODO: mencionar que o segundo grupo de experimentos depende da saida do primeiro. Para isso primeiro foram avaliados os melhores meacanismos de selecao do primeiro. 
 The second group of experiments, GEHyPSP-2, consisted on  generating only acceptance criteria. The selection mechanism was fixed using the best selection mechanism found in the first group. Consequently, this group of experiments depends on the output from the first group. The goal of this experiment was to evaluate the generation of acceptance criteria separately from the selection mechanism using a fixed one.
@@ -1041,7 +1041,7 @@ For each group of experiments, eleven instances (amino-acid sequences from the H
 
 \subsection{Results from GEHyPSP-1}
 
-The best individual found in the GEHyPSP-1 was the following selection mechanism:  $RC * Ccurrent * Cava - Cr$ and it was executed 30 times with a time limit of 30 minutes against the eleven instances. Table \ref{tab:gexp1best}  presents the fitness average, standard deviation, minimum and maximum of 30 executions of the best individual found in the GEHyPSP-1 experiment. The last row denoted with O(x*) is the best known value for each sequence. It is possible to note analyzing the last two rows that only for 7 sequences the selection mechanism generated achieved the best known  results. However in the case of sequences 7, 9, 10 and 11 the results obtained are very far from the best known results.
+The best individual found in the GEHyPSP-1 was the following selection mechanism:  $RC * Ccurrent * Cava - Cr$ and it was executed 30 times with a time limit of 30 minutes against the eleven instances. Table \ref{tab:gexp1best}  presents the fitness average, standard deviation, minimum and maximum of 30 executions of the best individual found in the GEHyPSP-1 experiment. The last row denoted with O(x*) is the best known value for each instance. It is possible to note analyzing the last two rows that only for 7 instances the selection mechanism generated achieved the best known  results. However in the case of instances 7, 9, 10 and 11 the results obtained are very far from the best known results.
 
 %TODO: resultado grupo 1
 \begin{table}[]
@@ -1088,7 +1088,7 @@ The best individual generated by the experiment GEHyPSP-3 was both a selection m
 Selection Mechanism: $( ( ( ( ( Caccept / RC ) * Cr / Caccept ) / RC * Cr ) / Caccept / RC ) * Cr ) / Caccept$ \\
 Acceptance Criterion: $( ( ( ( ( CI / PF ) * Delta / CI ) / PF * Delta ) / CI / PF ) * Delta ) / CI$
 
-Table \ref{bestGExp3} presents the results of the best individual generated by the experiment GEHyPSP-3, of 30 executions with a time limit of 30 minutes. Once again the values presented did not achieve good results for most sequences. Only for 2 very simple instances the best known results were achieved. Consequently, when comparing Table \ref{bestGExp3} with Tables \ref{tab:gexp1best} and \ref{tab:gexp2best} it is possible to see that generating both selection mechanisms and acceptance criteria produces worse results than generating them separately.
+Table \ref{bestGExp3} presents the results of the best individual generated by the experiment GEHyPSP-3, of 30 executions with a time limit of 30 minutes. Once again the values presented did not achieve good results for most instances. Only for 2 very simple instances the best known results were achieved. Consequently, when comparing Table \ref{bestGExp3} with Tables \ref{tab:gexp1best} and \ref{tab:gexp2best} it is possible to see that generating both selection mechanisms and acceptance criteria produces worse results than generating them separately.
 
 \begin{table}[]
 	\centering
@@ -1113,7 +1113,9 @@ Table \ref{bestGExp3} presents the results of the best individual generated by t
 \subsection{Comparison with a state-of-art hyper-heuristic}
 In order to compare the generated high level heuristics with an already proposed hyper-heuristic strategy a state-of-art human-designed hyper-heuristic framework \cite{misir2012intelligent} was selected. This framework produced the best results applied to the 6 domain problems from HyFlex framework \cite{ochoa2012hyflex}. Misir et al. \cite{misir2012intelligent} provided us the source code from the GIHH and then it was executed against the PSP problem. 
 
-Table \ref{tab:gihhandbhlh} presents the best results, for each instance, found by the best generated high level heuristic with GEHyPSP, the best results found by the GIHH \cite{misir2012intelligent} and finally the best know results (O_x(*)). The GEHyPSP and the GIHH were executed 30 minutes. It is possible to note that the GEHyPSP did not achieve the same quality of results as GIHH as the sequences length increase. However, the GIHH is a human-designed hyper-heuristic which demanded several years of research in order to be completed and achieved good results in the six domains problems provided by HyFlex. Despite the good performance obtained by the GIHH in the domains from HyFlex, it is possible to notice that the GIHH was also unable to achieve the best known results in many instances.
+Table \ref{tab:gihhandbhlh} presents the best results, for each instance, found by the best generated high level heuristic with GEHyPSP, the best results found by the GIHH \cite{misir2012intelligent} and finally the best know results (O_x(*)). The GEHyPSP and the GIHH were executed 30 minutes. It is possible to note that the GEHyPSP achieved similar results compared with GIHH. In 6 cases GIHH found the best known results and in the other hand GEHyPSP was able to achieve the best known results in 7 cases. Although the results for instance 7 for both approaches are not the best known. It is possible to see that the GIHH obtained a higher value. The same is true for instances 9,10 and 11 which are the more complex from the benchmark set. Thus, the GIHH obtained better results than the GEHyPSP in the cases that the instances were more complex. However, the GIHH is a human-designed hyper-heuristic which demanded several years of research in order to be completed and achieved good results in the six domains problems provided by HyFlex.
+
+% Despite the good performance obtained by the GIHH in the domains from HyFlex, it is possible to notice that the GIHH was also unable to achieve the best known results in many instances.
 
 \begin{table}[]
 	\centering
@@ -1122,7 +1124,7 @@ Table \ref{tab:gihhandbhlh} presents the best results, for each instance, found 
 	\begin{tabular}{cccccccccccc}
 		Inst         & 1 & 2 & 3 & 4  & 5  & 6  & 7  & 8  & 9  & 10 & 11 \\ \hline
 		GEHyPSP  & \textbf{9} & \textbf{9} & \textbf{8} & \textbf{14} & \textbf{23} & \textbf{21} & 33 & \textbf{42} & 46 & 40 & 41 \\ \hline
-		GIHH (max)   & \textbf{9} & \textbf{9} & \textbf{8} & \textbf{14} & \textbf{23} & \textbf{21} & 35 & 37 & 49 & 43 & 45 \\ \hline
+		GIHH (max)   & \textbf{9} & \textbf{9} & \textbf{8} & \textbf{14} & \textbf{23} & \textbf{21} & 35 & 40 & 49 & 43 & 45 \\ \hline
 		O(x*)        & 9 & 9 & 8 & 14 & 23 & 21 & 36 & 42 & 53 & 48 & 50
 	\end{tabular}
 \end{table}
@@ -1152,12 +1154,9 @@ However, very often the proposed heuristic approaches are unable to find the bes
 
 Three groups of experiments were executed: first generating only selection mechanisms within a fixed acceptance criterion; second generating only acceptance criteria using the best selection mechanism found in the first; finally both high level heuristics were generated in parallel. The results showed that better high level heuristics were found when generating them separately. 
 
-Unfortunately, when analyzing the behavior of the generated high level heuristics against the eleven instances it was possible to see that only generating selection mechanisms. Combined with the "better or equal" acceptance strategy the generated selection mechanism as able to achieve the best known results for 7 sequences from a total of 11. However, in the remaining sequences are the most challenging and complex, only PERM \cite{hsu2003growth}, from the previous studies considered in this paper,  obtained the best known results for those sequences.
+Combined with the "better or equal" human-designed acceptance criterion the best generated selection mechanism as able to achieve the best known results for 7 instances from a total of 11. However, in the remaining instances which are the most challenging and complex, only PERM \cite{hsu2003growth}, from the previous studies considered by this paper,  obtained the best known results. Also a comparison with a good state-of-art human-designed hyper-heuristic framework (GIHH) \cite{misir2012intelligent} was done. The results from both approaches are slightly close. This fact suggested that it is possible to automate the creation of high level heuristics and obtain results close to the state-of-art hyper-heuristics frameworks. 
 
-
-Unfortunately, when analyzing the behavior of the generated high level heuristics against the eleven instances it was possible to see that they were not able to achieve the best known results for many sequences. However, when comparing with a good state-of-art human-designed hyper-heuristic framework (GIHH) \cite{misir2012intelligent} the results are slightly close. This fact shows that it is possible to automate the creation of high level heuristics and obtain results close to the state-of-art hyper-heuristics frameworks. 
-
- Another finding of this work was the behavior of the best generated acceptance criteria. It was noticed that it behaves just like "a better or equal" human-designed move acceptance strategy. Also some of the generated acceptance criteria were always accepting worst solution and this fact impacted in the individual fitness. This fact demonstrates that GEHyPSP was able to generate acceptance criteria with the same behavior of simple human-designed move acceptance strategies. However, in order to obtain better results it might be necessary to improve GEHyPSP to generate more complex selection mechanisms and acceptance criteria to couple with the landscape complexity of the PSP problem. 
+ Another finding of this work was the behavior of the best generated acceptance criteria. It was noticed that it behaves just like "a better or equal" human-designed acceptance criterion. Also some of the generated acceptance criteria were always accepting worst solution and this fact impacted in the individual fitness. This fact demonstrates that GEHyPSP was able to generate acceptance criteria with the same behavior of simple human-designed move acceptance strategies. However, in order to obtain better results it might be necessary to improve GEHyPSP to generate more complex selection mechanisms and acceptance criteria to couple with the landscape complexity of the PSP problem. 
  
  
 
