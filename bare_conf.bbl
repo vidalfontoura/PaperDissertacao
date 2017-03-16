@@ -1,10 +1,10 @@
 \begin{thebibliography}{10}
 
 \bibitem{benitez2015algoritmo}
-C{\'e}sar Manuel~Vargas Ben{\'\i}tez.
-\newblock Um algoritmo gen{\'e}tico paralelo para o problema de dobramento de
-  prote{\'\i}nas utilizando o modelo 3dhp com cadeia lateral.
-\newblock 2010.
+C{\'e}sar Manuel~Vargas Ben{\'\i}tez and Heitor~Silv{\'e}rio Lopes.
+\newblock Protein structure prediction with the {3D-HP} side-chain model using
+  a master--slave parallel genetic algorithm.
+\newblock {\em Journal of the Brazilian Computer Society}, 16(1):69--78, 2010.
 
 \bibitem{blum2011hybrid}
 Christian Blum, Jakob Puchinger, G{\"u}nther~R Raidl, and Andrea Roli.
@@ -40,11 +40,6 @@ F{\'a}bio~L Cust{\'o}dio, H{\'e}lio~JC Barbosa, and Laurent~E Dardenne.
 F{\'a}bio~Lima Cust{\'o}dio, Helio~JC Barbosa, and Laurent~Emmanuel Dardenne.
 \newblock A multiple minima genetic algorithm for protein structure prediction.
 \newblock {\em Applied Soft Computing}, 15:88--99, 2014.
-
-\bibitem{davis2009rosettaligand}
-Ian~W Davis and David Baker.
-\newblock Rosettaligand docking with full ligand and receptor flexibility.
-\newblock {\em Journal of molecular biology}, 385(2):381--392, 2009.
 
 \bibitem{ferreira2008gene}
 Candida Ferreira and U~Gepsoft.
@@ -85,14 +80,6 @@ Natalio Krasnogor, W~Hart, Jim Smith, and D~Pelta.
 \newblock Protein structure prediction with evolutionary algorithms.
 \newblock 1999.
 
-\bibitem{krieger2009improving}
-Elmar Krieger, Keehyoung Joo, Jinwoo Lee, Jooyoung Lee, Srivatsan Raman, James
-  Thompson, Mike Tyka, David Baker, and Kevin Karplus.
-\newblock Improving physical realism, stereochemistry, and side-chain accuracy
-  in homology modeling: four approaches that performed well in casp8.
-\newblock {\em Proteins: Structure, Function, and Bioinformatics},
-  77(S9):114--122, 2009.
-
 \bibitem{lau1989lattice}
 Kit~Fun Lau and Ken~A Dill.
 \newblock A lattice statistical mechanics model of the conformational and
@@ -119,13 +106,6 @@ Gabriela Ochoa, Matthew Hyde, Tim Curtois, Jose~A Vazquez-Rodriguez, James
 \newblock In {\em Evolutionary computation in combinatorial optimization},
   pages 136--147. Springer, 2012.
 
-\bibitem{qian2004improvement}
-Bin Qian, Angel~R Ortiz, and David Baker.
-\newblock Improvement of comparative model accuracy by free-energy optimization
-  along principal components of natural structural variation.
-\newblock {\em Proceedings of the National Academy of Sciences of the United
-  States of America}, 101(43):15346--15351, 2004.
-
 \bibitem{ryan1998grammatical}
 Conor Ryan, JJ~Collins, and Michael~O Neill.
 \newblock Grammatical evolution: Evolving programs for an arbitrary language.
@@ -140,25 +120,19 @@ Nasser~R Sabar, Masri Ayob, Graham Kendall, and Rong Qu.
 
 \bibitem{santana2008component}
 Roberto Santana, Pedro Larra{\~n}aga, and Jose~A Lozano.
-\newblock Component weighting functions for adaptive search with edas.
+\newblock Component weighting functions for adaptive search with {EDAs}.
 \newblock In {\em 2008 IEEE Congress on Evolutionary Computation (IEEE World
   Congress on Computational Intelligence)}, pages 4066--4073. IEEE, 2008.
 
-\bibitem{shen2009novo}
-Yang Shen, Robert Vernon, David Baker, and Ad~Bax.
-\newblock De novo protein structure generation from incomplete chemical shift
-  assignments.
-\newblock {\em Journal of biomolecular NMR}, 43(2):63--78, 2009.
-
 \bibitem{shmygelska2002ant}
 Alena Shmygelska, Rosalia Aguirre-Hernandez, and Holger~H Hoos.
-\newblock An ant colony optimization algorithm for the 2d hp protein folding
+\newblock An ant colony optimization algorithm for the {2D HP} protein folding
   problem.
 \newblock In {\em Ant Algorithms}, pages 40--52. Springer, 2002.
 
 \bibitem{shmygelska2003improved}
 Alena Shmygelska and Holger~H Hoos.
-\newblock An improved ant colony optimisation algorithm for the 2d hp protein
+\newblock An improved ant colony optimisation algorithm for the {2D HP} protein
   folding problem.
 \newblock In {\em Advances in Artificial Intelligence}, pages 400--417.
   Springer, 2003.
@@ -167,12 +141,5 @@ Alena Shmygelska and Holger~H Hoos.
 Ron Unger and John Moult.
 \newblock Genetic algorithms for protein folding simulations.
 \newblock {\em Journal of molecular biology}, 231(1):75--81, 1993.
-
-\bibitem{wang2012structural}
-Ling Wang, Eric~A Althoff, Jill Bolduc, Lin Jiang, James Moody, Jonathan~K
-  Lassila, Lars Giger, Donald Hilvert, Barry Stoddard, and David Baker.
-\newblock Structural analyses of covalent enzyme--substrate analog complexes
-  reveal strengths and limitations of de novo enzyme design.
-\newblock {\em Journal of molecular biology}, 415(3):615--625, 2012.
 
 \end{thebibliography}
